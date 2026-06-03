@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Conference | A Paradigmatic Shift in Public Service Delivery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy:      #162037;
+            --navy-mid:  #213250;
+            --gold:      #C49A3C;
+            --gold-light:#E8C97E;
+            --cream:     #F5F1EA;
+            --white:     #FDFAF5;
+            --text:      #1C1C2E;
+            --text-mid:  #4A4A60;
+            --text-light:#7A7A90;
+            --border:    #DDD8CE;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--white);
+            color: var(--text);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--navy);
+            padding: 0 56px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 58px;
+            border-bottom: 1px solid rgba(196,154,60,0.2);
+        }
+
+        .nav-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--gold-light);
+            letter-spacing: 0.03em;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 11.5px;
+            font-weight: 500;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.65);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--gold-light); }
+
+        /* ── HERO ── */
+        .hero {
+            background: var(--navy);
+            color: white;
+            padding: 96px 56px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 55% 70% at 85% 15%, rgba(196,154,60,0.09) 0%, transparent 60%),
+                radial-gradient(ellipse 40% 55% at 5%  85%, rgba(196,154,60,0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            max-width: 860px;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            color: var(--gold);
+            border: 1px solid rgba(196,154,60,0.35);
+            padding: 6px 14px;
+            border-radius: 2px;
+            margin-bottom: 28px;
+        }
+
+        .hero-badge span {
+            width: 5px;
+            height: 5px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(30px, 4.2vw, 54px);
+            font-weight: 600;
+            line-height: 1.18;
+            margin-bottom: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.6);
+            max-width: 540px;
+            margin-bottom: 44px;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 44px;
+        }
+
+        .meta-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            padding: 9px 16px;
+            border-radius: 3px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.82);
+        }
+
+        .meta-pill svg { opacity: 0.55; flex-shrink: 0; }
+
+        .meta-pill.tbc {
+            border-style: dashed;
+            color: rgba(255,255,255,0.45);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            padding: 13px 30px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .btn-primary:hover {
+            background: var(--gold-light);
+            transform: translateY(-1px);
+        }
+
+        /* ── SHARED ── */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 56px;
+        }
+
+        .section { padding: 88px 0; }
+        .section.alt { background: var(--cream); }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(26px, 2.8vw, 40px);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--navy);
+            margin-bottom: 18px;
+        }
+
+        .section-lead {
+            font-size: 15.5px;
+            color: var(--text-mid);
+            max-width: 680px;
+            line-height: 1.78;
+            margin-bottom: 48px;
+        }
+
+        hr.divider {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── ABOUT ── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.35fr 1fr;
+            gap: 72px;
+            align-items: start;
+        }
+
+        .about-text p {
+            color: var(--text-mid);
+            font-size: 15.5px;
+            line-height: 1.82;
+            margin-bottom: 18px;
+        }
+
+        .about-text p:last-child { margin-bottom: 0; }
+
+        .about-facts {
+            border-left: 2px solid var(--gold);
+            padding-left: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .fact-label {
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 3px;
+        }
+
+        .fact-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.3;
+        }
+
+        /* ── PILLARS ── */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+        }
+
+        .pillar-card {
+            background: white;
+            padding: 38px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 80px;
+            font-weight: 700;
+            color: var(--cream);
+            line-height: 1;
+            position: absolute;
+            top: 16px;
+            right: 20px;
+            user-select: none;
+        }
+
+        .pillar-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--navy);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .pillar-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 10px;
+        }
+
+        .pillar-desc {
+            font-size: 14px;
+            color: var(--text-mid);
+            line-height: 1.72;
+        }
+
+        /* ── WORKSHOPS ── */
+        .workshops-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .workshop-card {
+            border: 1px solid var(--border);
+            padding: 34px;
+        }
+
+        .workshop-index {
+            font-size: 10.5px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .workshop-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 23px;
+            font-weight: 600;
+            color: var(--navy);
+            line-height: 1.28;
+            margin-bottom: 14px;
+        }
+
+        .workshop-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .tag {
+            font-size: 11.5px;
+            font-weight: 500;
+            background: var(--cream);
+            color: var(--text-mid);
+            padding: 4px 10px;
+            border-radius: 2px;
+        }
+
+        .workshop-summary {
+            font-size: 14px;
+            color: var(--text-mid);
+            line-height: 1.72;
+            margin-bottom: 22px;
+        }
+
+        .workshop-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-outline {
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--navy);
+            border: 1px solid var(--navy);
+            padding: 7px 15px;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .btn-outline:hover { background: var(--navy); color: white; }
+
+        .btn-outline.muted {
+            border-color: var(--border);
+            color: var(--text-mid);
+        }
+
+        .btn-outline.muted:hover { background: var(--cream); }
+
+        .video-wrapper {
+            aspect-ratio: 16 / 9;
+            margin-top: 4px;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* ── PLACEHOLDER BOX ── */
+        .ph-box {
+            border: 1.5px dashed var(--border);
+            padding: 56px 40px;
+            text-align: center;
+            border-radius: 2px;
+        }
+
+        .ph-icon {
+            width: 46px;
+            height: 46px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+        }
+
+        .ph-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .ph-note {
+            font-size: 13.5px;
+            color: var(--text-light);
+            max-width: 400px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+
+        /* ── SPEAKERS ── */
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .speaker-ph {
+            border: 1.5px dashed var(--border);
+            padding: 24px 20px;
+            text-align: center;
+            border-radius: 2px;
+        }
+
+        .sp-avatar {
+            width: 56px;
+            height: 56px;
+            background: var(--cream);
+            border-radius: 50%;
+            margin: 0 auto 12px;
+        }
+
+        .sp-name  { height: 13px; background: var(--cream); border-radius: 2px; margin: 0 auto 7px; width: 72%; }
+        .sp-role  { height: 11px; background: var(--cream); border-radius: 2px; margin: 0 auto;      width: 55%; }
+
+        /* ── DOWNLOADS ── */
+        .downloads-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .dl-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 26px;
+            background: var(--cream);
+            border-left: 3px solid transparent;
+            transition: border-color 0.2s, background 0.18s;
+        }
+
+        .dl-item:hover { border-color: var(--gold); background: #ede8df; }
+
+        .dl-info { display: flex; align-items: center; gap: 16px; }
+
+        .dl-badge {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.10em;
+            text-transform: uppercase;
+            background: var(--navy);
+            color: var(--gold);
+            padding: 3px 8px;
+            border-radius: 2px;
+            min-width: 46px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .dl-name {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .dl-desc {
+            font-size: 12.5px;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        .dl-action {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--navy);
+            text-decoration: none;
+            flex-shrink: 0;
+        }
+
+        .dl-action.soon { color: var(--text-light); pointer-events: none; }
+
+        /* ── PARTNERS ── */
+        .partners {
+            background: var(--navy);
+            padding: 88px 0;
+        }
+
+        .partners .section-label { color: rgba(196,154,60,0.8); }
+        .partners .section-title { color: white; }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+
+        .partner-card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 30px 26px;
+        }
+
+        .partner-role {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 7px;
+        }
+
+        .partner-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 21px;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 8px;
+            line-height: 1.25;
+        }
+
+        .partner-desc {
+            font-size: 12.5px;
+            color: rgba(255,255,255,0.48);
+            line-height: 1.6;
+        }
+
+        /* ── REGISTER ── */
+        .register {
+            text-align: center;
+            padding: 96px 56px;
+            background: var(--cream);
+        }
+
+        .register .section-title  { margin: 0 auto 14px; }
+        .register .section-lead   { margin: 0 auto 36px; }
+
+        .register-note {
+            font-size: 12.5px;
+            color: var(--text-light);
+            margin-top: 14px;
+        }
+
+        .register-contact {
+            margin-top: 28px;
+            font-size: 14px;
+            color: var(--text-mid);
+        }
+
+        .register-contact a {
+            color: var(--navy);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #0D1725;
+            color: rgba(255,255,255,0.4);
+            padding: 36px 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12.5px;
+        }
+
+        .footer-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 15px;
+            font-weight: 600;
+            color: rgba(255,255,255,0.65);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 920px) {
+            nav { padding: 0 24px; }
+            .nav-links { display: none; }
+            .hero, .register { padding-left: 24px; padding-right: 24px; }
+            .container { padding: 0 24px; }
+            .about-grid, .workshops-grid, .pillars-grid { grid-template-columns: 1fr; }
+            .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+            footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+    <a href="#home" class="nav-brand">DPI Feedback Conference 2026</a>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#workshops">Workshops</a></li>
+        <li><a href="#agenda">Agenda</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#downloads">Downloads</a></li>
+        <li><a href="#register">Register</a></li>
+    </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+    <div class="hero-inner">
+        <div class="hero-badge">
+            <span></span>
+            Feedback Conference · AICCTP Project
+        </div>
+        <h1>A Paradigmatic Shift in<br>Public Service Delivery</h1>
+        <p class="hero-subtitle">Accessible, Inclusive, and Secure Digital Public Infrastructure</p>
+        <div class="hero-meta">
+            <div class="meta-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+                29 July 2026
+            </div>
+            <div class="meta-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+                The University of Queensland, Brisbane, Australia
+            </div>
+            <div class="meta-pill tbc">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+                Format: In-person / Hybrid · TBC
+            </div>
+        </div>
+        <a href="#register" class="btn-primary">Register Interest</a>
+    </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section class="section" id="about">
+    <div class="container">
+        <p class="section-label">About the Conference</p>
+        <h2 class="section-title">Context and Purpose</h2>
+        <div class="about-grid">
+            <div class="about-text">
+                <p>This conference is convened as the culminating feedback event for a joint research project titled "A Paradigmatic Shift in Public Service Delivery: Accessible, Inclusive, and Secure Digital Public Infrastructure", implemented by the Indian Council for Research on International Economic Relations (ICRIER) and the University of Queensland (UQ Cyber).</p>
+                <p>The project is funded by the Department of Foreign Affairs and Trade (DFAT), Australia, under the Australia-India Cyber and Critical Technology Partnership (AICCTP). It examines Digital Public Infrastructure (DPI) as a paradigmatic shift in public service delivery, generating policy-relevant evidence on how DPI can be designed and governed to deliver accessible, inclusive, and secure public services.</p>
+                <p>The research is structured around two focal use cases: India's Direct Benefit Transfer (DBT) ecosystem and healthcare provisioning through the Ayushman Bharat Digital Mission (ABDM), drawing broader lessons for the Indo-Pacific region. The conference will present preliminary findings from both case studies and seek structured expert feedback ahead of the final report.</p>
+            </div>
+            <div class="about-facts">
+                <div>
+                    <div class="fact-label">Project</div>
+                    <div class="fact-value">AICCTP Round 4</div>
+                </div>
+                <div>
+                    <div class="fact-label">Funder</div>
+                    <div class="fact-value">Department of Foreign Affairs and Trade (DFAT), Australia</div>
+                </div>
+                <div>
+                    <div class="fact-label">Implementing Organisations</div>
+                    <div class="fact-value">ICRIER and UQ Cyber</div>
+                </div>
+                <div>
+                    <div class="fact-label">Project Period</div>
+                    <div class="fact-value">July 2025 onwards</div>
+                </div>
+                <div>
+                    <div class="fact-label">Focal Use Cases</div>
+                    <div class="fact-value">Direct Benefit Transfer (DBT) and Healthcare (ABDM)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── PILLARS ── -->
+<section class="section alt" id="themes">
+    <div class="container">
+        <p class="section-label">Analytical Framework</p>
+        <h2 class="section-title">Three Research Pillars</h2>
+        <p class="section-lead">The project evaluates DPI-enabled public service delivery along three interconnected analytical dimensions.</p>
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-number">01</div>
+                <div class="pillar-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <div class="pillar-title">Accessibility and Inclusivity</div>
+                <p class="pillar-desc">How DPI systems can be designed to ensure equitable access and last-mile delivery across diverse populations, with particular attention to vulnerable and marginalised groups.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-number">02</div>
+                <div class="pillar-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                </div>
+                <div class="pillar-title">Efficiency</div>
+                <p class="pillar-desc">Assessment of administrative efficiency, fund flow integration, interoperability, and monitoring within large-scale DPI-enabled welfare and health architectures.</p>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-number">03</div>
+                <div class="pillar-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <div class="pillar-title">Security</div>
+                <p class="pillar-desc">Examination of cybersecurity risks, data governance frameworks, privacy-preserving architectures, and institutional safeguards within DPI-enabled public service delivery systems.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── WORKSHOPS ── -->
+<section class="section" id="workshops">
+    <div class="container">
+        <p class="section-label">Project Background</p>
+        <h2 class="section-title">Panel Workshops</h2>
+        <p class="section-lead">Two panel workshops were conducted as part of the primary research programme, engaging policymakers, technologists, researchers, civil society, and practitioners on each focal use case.</p>
+        <div class="workshops-grid">
+
+            <div class="workshop-card">
+                <div class="workshop-index">Workshop 1 of 2</div>
+                <div class="workshop-title">Transformation of Health Systems through Digital Public Infrastructure</div>
+                <div class="workshop-tags">
+                    <span class="tag">9 January 2026</span>
+                    <span class="tag">India Habitat Centre, New Delhi</span>
+                    <span class="tag">42 Participants</span>
+                    <span class="tag">Hybrid</span>
+                </div>
+                <p class="workshop-summary">A full-day hybrid workshop examining India's Ayushman Bharat Digital Mission (ABDM) as a focal DPI health case. Experts from government, the private sector, international organisations, and civil society deliberated on technical foundations, governance, public-private partnerships, and cybersecurity in DPI-enabled health systems.</p>
+                <div class="workshop-links">
+                    <a href="https://icrier.org/pdf/Transformation-of-Health-Systems-through-Digital-Public-Infrastructure.pdf" target="_blank" class="btn-outline">Outcome Document</a>
+                </div>
+            </div>
+
+            <div class="workshop-card">
+                <div class="workshop-index">Workshop 2 of 2</div>
+                <div class="workshop-title">Digital Public Infrastructure and Public Service Delivery: Inclusion. Efficiency. Security.</div>
+                <div class="workshop-tags">
+                    <span class="tag">8 May 2026</span>
+                    <span class="tag">India Habitat Centre, New Delhi</span>
+                    <span class="tag">Roundtable</span>
+                </div>
+                <p class="workshop-summary">A roundtable bringing together policymakers, technologists, civil society, and cybersecurity experts to deliberate on India's Direct Benefit Transfer (DBT) ecosystem. Discussions examined the interaction between inclusion, efficiency, and security in DPI-enabled welfare delivery systems.</p>
+                <div class="workshop-links">
+                    <a href="https://icrier.org/events/digital-public-infrastructure-and-public-service-delivery-inclusion-efficiency-security/" target="_blank" class="btn-outline">Event Page</a>
+                    <a href="https://icrier.org/wp-content/uploads/2026/04/Concept-Note-DBT-Workshop-May-8.pdf" target="_blank" class="btn-outline muted">Concept Note</a>
+                </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/pySgfpwEjzg?si=3FCny5DXazfJBwRV" allowfullscreen title="DBT Workshop Recording"></iframe>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── FEEDBACK THEMES ── -->
+<section class="section" id="feedback">
+    <div class="container">
+        <p class="section-label">Conference Structure</p>
+        <h2 class="section-title">Structured Feedback Themes</h2>
+        <p class="section-lead">The conference will seek expert feedback on the preliminary draft report, including findings from both case studies and the DPI Evaluation Framework developed as a key project output.</p>
+        <div class="ph-box">
+            <div class="ph-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A7A90" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+            </div>
+            <div class="ph-title">Feedback Questions and Discussion Themes</div>
+            <p class="ph-note">To be populated from the finalised concept note. Will include structured questions on the Australia vs. India comparative findings and the DPI Evaluation Framework.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── AGENDA ── -->
+<section class="section alt" id="agenda">
+    <div class="container">
+        <p class="section-label">Programme</p>
+        <h2 class="section-title">Conference Agenda</h2>
+        <p class="section-lead">The full programme is currently under preparation by the organising team.</p>
+        <div class="ph-box">
+            <div class="ph-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A7A90" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+            </div>
+            <div class="ph-title">Agenda Coming Soon</div>
+            <p class="ph-note">Session details, timing, and moderator assignments will be published here once the programme is finalised.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ── SPEAKERS ── -->
+<section class="section" id="speakers">
+    <div class="container">
+        <p class="section-label">Invited Participants</p>
+        <h2 class="section-title">Keynote Speakers and Discussants</h2>
+        <p class="section-lead">Invitations to keynote speakers and invited participants are currently being extended. Speaker profiles will be listed here as confirmations are received.</p>
+        <div class="speakers-grid">
+            <div class="speaker-ph"><div class="sp-avatar"></div><div class="sp-name"></div><div class="sp-role"></div></div>
+            <div class="speaker-ph"><div class="sp-avatar"></div><div class="sp-name"></div><div class="sp-role"></div></div>
+            <div class="speaker-ph"><div class="sp-avatar"></div><div class="sp-name"></div><div class="sp-role"></div></div>
+            <div class="speaker-ph"><div class="sp-avatar"></div><div class="sp-name"></div><div class="sp-role"></div></div>
+        </div>
+    </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── DOWNLOADS ── -->
+<section class="section" id="downloads">
+    <div class="container">
+        <p class="section-label">Resources</p>
+        <h2 class="section-title">Downloads</h2>
+        <div class="downloads-list">
+            <div class="dl-item">
+                <div class="dl-info">
+                    <span class="dl-badge">PDF</span>
+                    <div>
+                        <div class="dl-name">Health Workshop Outcome Document</div>
+                        <div class="dl-desc">Workshop 1 · January 2026 · ICRIER and UQ Cyber</div>
+                    </div>
+                </div>
+                <a href="https://icrier.org/pdf/Transformation-of-Health-Systems-through-Digital-Public-Infrastructure.pdf" target="_blank" class="dl-action">Download</a>
+            </div>
+            <div class="dl-item">
+                <div class="dl-info">
+                    <span class="dl-badge">PDF</span>
+                    <div>
+                        <div class="dl-name">DBT Workshop Concept Note</div>
+                        <div class="dl-desc">Workshop 2 · May 2026 · ICRIER</div>
+                    </div>
+                </div>
+                <a href="https://icrier.org/wp-content/uploads/2026/04/Concept-Note-DBT-Workshop-May-8.pdf" target="_blank" class="dl-action">Download</a>
+            </div>
+            <div class="dl-item">
+                <div class="dl-info">
+                    <span class="dl-badge">PDF</span>
+                    <div>
+                        <div class="dl-name">Conference Concept Note</div>
+                        <div class="dl-desc">Feedback Conference · 29 July 2026 · Pending finalisation</div>
+                    </div>
+                </div>
+                <span class="dl-action soon">Coming Soon</span>
+            </div>
+            <div class="dl-item">
+                <div class="dl-info">
+                    <span class="dl-badge">PDF</span>
+                    <div>
+                        <div class="dl-name">Conference Agenda</div>
+                        <div class="dl-desc">Full programme · Pending finalisation</div>
+                    </div>
+                </div>
+                <span class="dl-action soon">Coming Soon</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── PARTNERS ── -->
+<section class="partners" id="partners">
+    <div class="container">
+        <p class="section-label">Organising Partners</p>
+        <h2 class="section-title">Institutions</h2>
+        <div class="partners-grid" style="margin-top:48px">
+            <div class="partner-card">
+                <div class="partner-role">Implementing Organisation</div>
+                <div class="partner-name">ICRIER / IPCIDE</div>
+                <div class="partner-desc">Indian Council for Research on International Economic Relations, ICRIER Prosus Centre for Internet and Digital Economy, New Delhi</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-role">Partner Organisation</div>
+                <div class="partner-name">UQ Cyber</div>
+                <div class="partner-desc">School of Electrical Engineering and Computer Science, The University of Queensland, Brisbane, Australia</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-role">Funder</div>
+                <div class="partner-name">DFAT / AICCTP</div>
+                <div class="partner-desc">Department of Foreign Affairs and Trade, Australia. Australia-India Cyber and Critical Technology Partnership, Round 4.</div>
+            </div>
+            <div class="partner-card">
+                <div class="partner-role">Supporting Organisation</div>
+                <div class="partner-name">Gates Foundation</div>
+                <div class="partner-desc">Provided support for the Health Workshop on Transformation of Health Systems through Digital Public Infrastructure, January 2026.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── REGISTER ── -->
+<section class="register" id="register">
+    <div class="container">
+        <p class="section-label">Participation</p>
+        <h2 class="section-title">Register Your Interest</h2>
+        <p class="section-lead">This is an invitation-only event. If you would like to express interest in attending, please contact the organising team. Further details on registration, format, and logistics will be shared with confirmed participants.</p>
+        <a href="mailto:[PLACEHOLDER: organising team email]" class="btn-primary">Express Interest</a>
+        <p class="register-note">Registration deadline: [To be confirmed]</p>
+        <div class="register-contact">
+            For enquiries, contact: <a href="mailto:[PLACEHOLDER: organising team email]">[PLACEHOLDER: organising team email]</a>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-brand">DPI Feedback Conference 2026</div>
+    <div>Jointly organised by ICRIER and UQ Cyber · Funded by DFAT under AICCTP</div>
+    <div>29 July 2026 · Brisbane, Australia</div>
+</footer>
+
+</body>
+</html>
