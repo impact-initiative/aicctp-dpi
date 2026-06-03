@@ -1,971 +1,520 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Conference | A Paradigmatic Shift in Public Service Delivery</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --navy:      #162037;
-            --navy-mid:  #213250;
-            --gold:      #C49A3C;
-            --gold-light:#E8C97E;
-            --cream:     #F5F1EA;
-            --white:     #FDFAF5;
-            --text:      #1C1C2E;
-            --text-mid:  #4A4A60;
-            --text-light:#7A7A90;
-            --border:    #DDD8CE;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Jost', sans-serif;
-            background: var(--white);
-            color: var(--text);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        /* ── NAV ── */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--navy);
-            padding: 0 56px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 58px;
-            border-bottom: 1px solid rgba(196,154,60,0.2);
-        }
-
-        .nav-brand {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--gold-light);
-            letter-spacing: 0.03em;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 36px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 11.5px;
-            font-weight: 500;
-            letter-spacing: 0.10em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.65);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: var(--gold-light); }
-
-        /* ── HERO ── */
-        .hero {
-            background: var(--navy);
-            color: white;
-            padding: 96px 56px 80px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse 55% 70% at 85% 15%, rgba(196,154,60,0.09) 0%, transparent 60%),
-                radial-gradient(ellipse 40% 55% at 5%  85%, rgba(196,154,60,0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
-
-        .hero-inner {
-            max-width: 860px;
-            position: relative;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.13em;
-            text-transform: uppercase;
-            color: var(--gold);
-            border: 1px solid rgba(196,154,60,0.35);
-            padding: 6px 14px;
-            border-radius: 2px;
-            margin-bottom: 28px;
-        }
-
-        .hero-badge span {
-            width: 5px;
-            height: 5px;
-            background: var(--gold);
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(30px, 4.2vw, 54px);
-            font-weight: 600;
-            line-height: 1.18;
-            margin-bottom: 16px;
-            letter-spacing: -0.01em;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            font-weight: 300;
-            color: rgba(255,255,255,0.6);
-            max-width: 540px;
-            margin-bottom: 44px;
-        }
-
-        .hero-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 44px;
-        }
-
-        .meta-pill {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.12);
-            padding: 9px 16px;
-            border-radius: 3px;
-            font-size: 13px;
-            color: rgba(255,255,255,0.82);
-        }
-
-        .meta-pill svg { opacity: 0.55; flex-shrink: 0; }
-
-        .meta-pill.tbc {
-            border-style: dashed;
-            color: rgba(255,255,255,0.45);
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--navy);
-            font-size: 12.5px;
-            font-weight: 600;
-            letter-spacing: 0.09em;
-            text-transform: uppercase;
-            padding: 13px 30px;
-            border-radius: 2px;
-            text-decoration: none;
-            transition: background 0.2s, transform 0.15s;
-        }
-
-        .btn-primary:hover {
-            background: var(--gold-light);
-            transform: translateY(-1px);
-        }
-
-        /* ── SHARED ── */
-        .container {
-            max-width: 1080px;
-            margin: 0 auto;
-            padding: 0 56px;
-        }
-
-        .section { padding: 88px 0; }
-        .section.alt { background: var(--cream); }
-
-        .section-label {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(26px, 2.8vw, 40px);
-            font-weight: 600;
-            line-height: 1.2;
-            color: var(--navy);
-            margin-bottom: 18px;
-        }
-
-        .section-lead {
-            font-size: 15.5px;
-            color: var(--text-mid);
-            max-width: 680px;
-            line-height: 1.78;
-            margin-bottom: 48px;
-        }
-
-        hr.divider {
-            border: none;
-            border-top: 1px solid var(--border);
-        }
-
-        /* ── ABOUT ── */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1.35fr 1fr;
-            gap: 72px;
-            align-items: start;
-        }
-
-        .about-text p {
-            color: var(--text-mid);
-            font-size: 15.5px;
-            line-height: 1.82;
-            margin-bottom: 18px;
-        }
-
-        .about-text p:last-child { margin-bottom: 0; }
-
-        .about-facts {
-            border-left: 2px solid var(--gold);
-            padding-left: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-
-        .fact-label {
-            font-size: 10.5px;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-light);
-            margin-bottom: 3px;
-        }
-
-        .fact-value {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 19px;
-            font-weight: 600;
-            color: var(--navy);
-            line-height: 1.3;
-        }
-
-        /* ── PILLARS ── */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-        }
-
-        .pillar-card {
-            background: white;
-            padding: 38px 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pillar-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 80px;
-            font-weight: 700;
-            color: var(--cream);
-            line-height: 1;
-            position: absolute;
-            top: 16px;
-            right: 20px;
-            user-select: none;
-        }
-
-        .pillar-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--navy);
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 22px;
-        }
-
-        .pillar-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 25px;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 10px;
-        }
-
-        .pillar-desc {
-            font-size: 14px;
-            color: var(--text-mid);
-            line-height: 1.72;
-        }
-
-        /* ── WORKSHOPS ── */
-        .workshops-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 28px;
-        }
-
-        .workshop-card {
-            border: 1px solid var(--border);
-            padding: 34px;
-        }
-
-        .workshop-index {
-            font-size: 10.5px;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .workshop-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 23px;
-            font-weight: 600;
-            color: var(--navy);
-            line-height: 1.28;
-            margin-bottom: 14px;
-        }
-
-        .workshop-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 18px;
-        }
-
-        .tag {
-            font-size: 11.5px;
-            font-weight: 500;
-            background: var(--cream);
-            color: var(--text-mid);
-            padding: 4px 10px;
-            border-radius: 2px;
-        }
-
-        .workshop-summary {
-            font-size: 14px;
-            color: var(--text-mid);
-            line-height: 1.72;
-            margin-bottom: 22px;
-        }
-
-        .workshop-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .btn-outline {
-            font-size: 11.5px;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--navy);
-            border: 1px solid var(--navy);
-            padding: 7px 15px;
-            border-radius: 2px;
-            text-decoration: none;
-            transition: background 0.15s, color 0.15s;
-        }
-
-        .btn-outline:hover { background: var(--navy); color: white; }
-
-        .btn-outline.muted {
-            border-color: var(--border);
-            color: var(--text-mid);
-        }
-
-        .btn-outline.muted:hover { background: var(--cream); }
-
-        .video-wrapper {
-            aspect-ratio: 16 / 9;
-            margin-top: 4px;
-        }
-
-        .video-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-
-        /* ── PLACEHOLDER BOX ── */
-        .ph-box {
-            border: 1.5px dashed var(--border);
-            padding: 56px 40px;
-            text-align: center;
-            border-radius: 2px;
-        }
-
-        .ph-icon {
-            width: 46px;
-            height: 46px;
-            background: var(--cream);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 14px;
-        }
-
-        .ph-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--navy);
-            margin-bottom: 8px;
-        }
-
-        .ph-note {
-            font-size: 13.5px;
-            color: var(--text-light);
-            max-width: 400px;
-            margin: 0 auto;
-            line-height: 1.65;
-        }
-
-        /* ── SPEAKERS ── */
-        .speakers-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .speaker-ph {
-            border: 1.5px dashed var(--border);
-            padding: 24px 20px;
-            text-align: center;
-            border-radius: 2px;
-        }
-
-        .sp-avatar {
-            width: 56px;
-            height: 56px;
-            background: var(--cream);
-            border-radius: 50%;
-            margin: 0 auto 12px;
-        }
-
-        .sp-name  { height: 13px; background: var(--cream); border-radius: 2px; margin: 0 auto 7px; width: 72%; }
-        .sp-role  { height: 11px; background: var(--cream); border-radius: 2px; margin: 0 auto;      width: 55%; }
-
-        /* ── DOWNLOADS ── */
-        .downloads-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-
-        .dl-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 26px;
-            background: var(--cream);
-            border-left: 3px solid transparent;
-            transition: border-color 0.2s, background 0.18s;
-        }
-
-        .dl-item:hover { border-color: var(--gold); background: #ede8df; }
-
-        .dl-info { display: flex; align-items: center; gap: 16px; }
-
-        .dl-badge {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 0.10em;
-            text-transform: uppercase;
-            background: var(--navy);
-            color: var(--gold);
-            padding: 3px 8px;
-            border-radius: 2px;
-            min-width: 46px;
-            text-align: center;
-            flex-shrink: 0;
-        }
-
-        .dl-name {
-            font-size: 15px;
-            font-weight: 500;
-            color: var(--text);
-        }
-
-        .dl-desc {
-            font-size: 12.5px;
-            color: var(--text-light);
-            margin-top: 2px;
-        }
-
-        .dl-action {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            color: var(--navy);
-            text-decoration: none;
-            flex-shrink: 0;
-        }
-
-        .dl-action.soon { color: var(--text-light); pointer-events: none; }
-
-        /* ── PARTNERS ── */
-        .partners {
-            background: var(--navy);
-            padding: 88px 0;
-        }
-
-        .partners .section-label { color: rgba(196,154,60,0.8); }
-        .partners .section-title { color: white; }
-
-        .partners-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2px;
-        }
-
-        .partner-card {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 30px 26px;
-        }
-
-        .partner-role {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 7px;
-        }
-
-        .partner-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 21px;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 8px;
-            line-height: 1.25;
-        }
-
-        .partner-desc {
-            font-size: 12.5px;
-            color: rgba(255,255,255,0.48);
-            line-height: 1.6;
-        }
-
-        /* ── REGISTER ── */
-        .register {
-            text-align: center;
-            padding: 96px 56px;
-            background: var(--cream);
-        }
-
-        .register .section-title  { margin: 0 auto 14px; }
-        .register .section-lead   { margin: 0 auto 36px; }
-
-        .register-note {
-            font-size: 12.5px;
-            color: var(--text-light);
-            margin-top: 14px;
-        }
-
-        .register-contact {
-            margin-top: 28px;
-            font-size: 14px;
-            color: var(--text-mid);
-        }
-
-        .register-contact a {
-            color: var(--navy);
-            font-weight: 600;
-            text-decoration: none;
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: #0D1725;
-            color: rgba(255,255,255,0.4);
-            padding: 36px 56px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12.5px;
-        }
-
-        .footer-brand {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 15px;
-            font-weight: 600;
-            color: rgba(255,255,255,0.65);
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 920px) {
-            nav { padding: 0 24px; }
-            .nav-links { display: none; }
-            .hero, .register { padding-left: 24px; padding-right: 24px; }
-            .container { padding: 0 24px; }
-            .about-grid, .workshops-grid, .pillars-grid { grid-template-columns: 1fr; }
-            .speakers-grid { grid-template-columns: repeat(2, 1fr); }
-            .partners-grid { grid-template-columns: repeat(2, 1fr); }
-            footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governing for Trust | UQ Cyber Research Centre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --purple:  #51247A;
+      --deep:    #3C1A6B;
+      --pale:    #F5F1FB;
+      --rule:    #E2DCF0;
+      --white:   #FFFFFF;
+      --text:    #1C1A2E;
+      --mid:     #4A4065;
+      --soft:    #7A7090;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color: var(--text); font-size: 16px; line-height: 1.7; }
+
+    /* ── NAV ── */
+    nav { background: var(--deep); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1060px; margin: 0 auto; padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .nav-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
+    .nav-brand img { height: 32px; display: block; }
+    .nav-brand-div { width: 1px; height: 22px; background: rgba(255,255,255,0.2); }
+    .nav-brand-label { font-size: 12.5px; font-weight: 600; color: rgba(255,255,255,0.65); letter-spacing: 0.01em; }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { font-size: 11px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: rgba(255,255,255,0.9); }
+    .nav-partner { display: flex; align-items: center; gap: 8px; padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.1); }
+    .nav-partner-lbl { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.10em; color: rgba(255,255,255,0.3); }
+    .nav-partner img { height: 18px; filter: brightness(0) invert(1); opacity: 0.5; }
+
+    /* ── TEXTURE ── */
+    body {
+      background-color: var(--white);
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='0.7' fill='%2351247A' fill-opacity='0.055'/%3E%3C/svg%3E");
+    }
+    .section.pale {
+      background-color: var(--pale);
+      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='0.7' fill='%2351247A' fill-opacity='0.07'/%3E%3C/svg%3E");
+    }
+
+    /* ── HERO ── */
+    .hero { position: relative; overflow: hidden; padding: 80px 40px 72px; background: var(--deep); }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url('uq-campus.jpg'),
+        url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/AUS_Brisbane%2C_St_Lucia%2C_University_of_Queensland_0017.jpg/1280px-AUS_Brisbane%2C_St_Lucia%2C_University_of_Queensland_0017.jpg');
+      background-size: cover; background-position: center 35%;
+      filter: blur(5px) brightness(0.38) saturate(0.75);
+      transform: scale(1.06);
+      z-index: 0;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(170deg, rgba(60,26,107,0.45) 0%, rgba(20,6,46,0.60) 100%);
+      z-index: 0;
+    }
+    .hero-inner { max-width: 1060px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5.5vw, 66px); font-weight: 700; line-height: 1.08; color: white; margin-bottom: 10px; letter-spacing: -0.02em; }
+    .hero h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+    .hero-subtitle { font-size: 17px; font-weight: 300; color: rgba(255,255,255,0.5); margin-bottom: 36px; max-width: 560px; line-height: 1.55; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 36px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; }
+    .meta-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: rgba(255,255,255,0.65); }
+    .meta-item svg { opacity: 0.5; flex-shrink: 0; }
+    .meta-tbc { color: rgba(255,255,255,0.35); font-style: italic; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--purple); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px 24px; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
+    .hero-cta:hover { background: #EDE8F5; }
+
+    /* ── SHARED ── */
+    .section { padding: 80px 40px; }
+    .section.pale { }
+    .inner { max-width: 1060px; margin: 0 auto; }
+    .section-label { font-size: 10.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3vw, 38px); font-weight: 700; color: var(--deep); line-height: 1.18; margin-bottom: 14px; letter-spacing: -0.01em; }
+    .section-lead { font-size: 15.5px; color: var(--mid); max-width: 660px; line-height: 1.8; margin-bottom: 44px; }
+    hr.rule { border: none; border-top: 1px solid var(--rule); }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: start; }
+    .about-text p { font-size: 15px; color: var(--mid); line-height: 1.82; margin-bottom: 14px; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-facts { border-left: 2px solid var(--rule); padding-left: 28px; display: flex; flex-direction: column; gap: 22px; }
+    .fact-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); margin-bottom: 2px; }
+    .fact-value { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--deep); line-height: 1.3; }
+
+    /* ── WORKSHOPS ── */
+    .workshops-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .workshop { border: 1px solid var(--rule); padding: 30px; background: white; }
+    .workshop-num { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 10px; }
+    .workshop-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--deep); line-height: 1.28; margin-bottom: 12px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 14px; }
+    .tag { font-size: 11px; font-weight: 600; background: var(--pale); color: var(--purple); padding: 3px 9px; border-radius: 2px; }
+    .workshop-body { font-size: 14px; color: var(--mid); line-height: 1.72; margin-bottom: 18px; }
+    .workshop-links { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .btn-sm { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--purple); border: 1.5px solid var(--purple); padding: 6px 13px; border-radius: 2px; text-decoration: none; transition: all 0.15s; }
+    .btn-sm:hover { background: var(--purple); color: white; }
+    .btn-sm.muted { border-color: var(--rule); color: var(--soft); }
+    .btn-sm.muted:hover { background: var(--pale); border-color: var(--purple); color: var(--purple); }
+    .video { aspect-ratio: 16/9; }
+    .video iframe { width: 100%; height: 100%; border: 0; }
+
+    /* ── THEMES ── */
+    .themes-list { display: flex; flex-direction: column; gap: 1px; }
+    .theme { background: white; padding: 26px 32px; border-left: 3px solid var(--rule); }
+    .theme:hover { border-color: var(--purple); }
+    .theme-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+    .theme-num { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); flex-shrink: 0; }
+    .theme-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--deep); }
+    .theme-body { font-size: 14.5px; color: var(--mid); line-height: 1.76; padding-left: 62px; }
+
+    /* ── AGENDA ── */
+    .agenda-wrap { overflow-x: auto; }
+    .agenda { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+    .agenda thead th { background: var(--deep); color: rgba(255,255,255,0.85); padding: 11px 16px; text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; }
+    .agenda tbody tr:nth-child(even) { background: var(--pale); }
+    .agenda tbody tr:nth-child(odd) { background: white; }
+    .agenda td { padding: 12px 16px; border-bottom: 1px solid var(--rule); color: var(--mid); vertical-align: top; }
+    .agenda td.time { white-space: nowrap; font-weight: 600; color: var(--text); font-size: 12.5px; }
+    .agenda td.session { color: var(--text); }
+
+    /* ── SPEAKERS ── */
+    .speakers-note { font-size: 14px; color: var(--mid); background: var(--pale); border-left: 3px solid var(--purple); padding: 14px 20px; margin-bottom: 28px; }
+    .speakers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .speaker-card { border: 1px dashed var(--rule); padding: 24px 18px; text-align: center; }
+    .speaker-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--pale); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
+    .speaker-avatar svg { opacity: 0.35; }
+    .speaker-role { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 4px; }
+    .speaker-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--soft); font-style: italic; }
+
+    /* ── DOWNLOADS ── */
+    .dl-list { display: flex; flex-direction: column; gap: 1px; }
+    .dl-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: white; border-left: 3px solid transparent; transition: border-color 0.18s, background 0.18s; }
+    .dl-row:hover { border-color: var(--purple); background: var(--pale); }
+    .dl-left { display: flex; align-items: center; gap: 14px; }
+    .dl-badge { font-size: 9.5px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; background: var(--deep); color: rgba(200,166,232,0.9); padding: 2px 7px; border-radius: 2px; flex-shrink: 0; }
+    .dl-name { font-size: 14.5px; font-weight: 600; color: var(--text); }
+    .dl-sub { font-size: 12px; color: var(--soft); margin-top: 1px; }
+    .dl-action { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--purple); text-decoration: none; flex-shrink: 0; }
+    .dl-action.soon { color: var(--soft); pointer-events: none; }
+
+    /* ── PARTNERS ── */
+    .partners { background: var(--deep); padding: 72px 40px; }
+    .partners .section-label { color: rgba(200,166,232,0.75); }
+    .partners .section-title { color: white; }
+    .partners-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 1px; margin-top: 36px; background: rgba(255,255,255,0.06); }
+    .partner { background: var(--deep); padding: 26px 22px; }
+    .partner.lead { background: rgba(255,255,255,0.05); }
+    .partner-role { font-size: 9.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(200,166,232,0.7); margin-bottom: 10px; }
+    .partner-logo { margin-bottom: 10px; }
+    .partner-logo img { max-height: 32px; max-width: 140px; object-fit: contain; filter: brightness(0) invert(1); opacity: 0.75; }
+    .partner-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; line-height: 1.25; }
+    .partner-desc { font-size: 12px; color: rgba(255,255,255,0.38); line-height: 1.6; }
+
+    /* ── REGISTER ── */
+    .register { background: var(--pale); padding: 80px 40px; text-align: center; }
+    .register .section-title { margin: 0 auto 12px; }
+    .register .section-lead { margin: 0 auto 28px; }
+    .register-note { font-size: 12.5px; color: var(--soft); margin-top: 10px; }
+    .register-contact { margin-top: 20px; font-size: 13.5px; color: var(--mid); }
+    .register-contact a { color: var(--purple); font-weight: 600; text-decoration: none; }
+
+    /* ── FOOTER ── */
+    footer { background: #160829; padding: 36px 40px; }
+    .footer-inner { max-width: 1060px; margin: 0 auto; }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 18px; gap: 24px; }
+    .footer-brand img { height: 26px; display: block; margin-bottom: 8px; }
+    .footer-tag { font-size: 12px; color: rgba(255,255,255,0.3); max-width: 280px; line-height: 1.6; }
+    .footer-cols { display: flex; gap: 40px; }
+    .footer-col-head { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+    .footer-col a { display: block; font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none; margin-bottom: 5px; transition: color 0.2s; }
+    .footer-col a:hover { color: rgba(255,255,255,0.7); }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 11.5px; }
+    .footer-ack { color: rgba(255,255,255,0.22); max-width: 500px; line-height: 1.6; }
+    .footer-legal { color: rgba(255,255,255,0.18); text-align: right; }
+
+    @media (max-width: 900px) {
+      .about-grid, .workshops-grid { grid-template-columns: 1fr; }
+      .partners-grid { grid-template-columns: 1fr 1fr; }
+      .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links, .nav-partner { display: none; }
+      .footer-top { flex-direction: column; }
+      .footer-cols { flex-direction: column; gap: 20px; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-legal { text-align: left; }
+    }
+    @media (max-width: 580px) {
+      .hero, .section, .register, .partners, footer { padding-left: 20px; padding-right: 20px; }
+      .partners-grid { grid-template-columns: 1fr; }
+      .speakers-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- NAV -->
 <nav>
-    <a href="#home" class="nav-brand">DPI Feedback Conference 2026</a>
-    <ul class="nav-links">
+  <div class="nav-inner">
+    <a href="#home" class="nav-brand">
+      <img src="University-of-Queensland-UQ-logo.jpg" alt="The University of Queensland" onerror="this.src='https://static.uq.net.au/v11/logos/corporate/uq-logo--reversed.svg'">
+      <div class="nav-brand-div"></div>
+      <span class="nav-brand-label">UQ Cyber Research Centre</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#workshops">Workshops</a></li>
+        <li><a href="#themes">Themes</a></li>
         <li><a href="#agenda">Agenda</a></li>
         <li><a href="#speakers">Speakers</a></li>
-        <li><a href="#downloads">Downloads</a></li>
         <li><a href="#register">Register</a></li>
-    </ul>
+      </ul>
+      <div class="nav-partner">
+        <span class="nav-partner-lbl">In partnership with</span>
+        <img src="https://icrier.org/wp-content/themes/icrier/images/logo.png" alt="ICRIER">
+      </div>
+    </div>
+  </div>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero" id="home">
-    <div class="hero-inner">
-        <h1>A Paradigmatic Shift in<br>Public Service Delivery</h1>
-        <p class="hero-subtitle">Accessible, Inclusive, and Secure Digital Public Infrastructure</p>
-        <div class="hero-meta">
-            <div class="meta-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-                29 July 2026
-            </div>
-            <div class="meta-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                </svg>
-                The University of Queensland, Brisbane, Australia
-            </div>
-            <div class="meta-pill tbc">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                </svg>
-                Format: In-person / Hybrid · TBC
-            </div>
-        </div>
-        <a href="#register" class="btn-primary">Register Interest</a>
+  <div class="hero-inner">
+    <h1>Governing for Trust</h1>
+    <p class="hero-subtitle">Accessible, Efficient, and Secure Digital Public Infrastructure in India and Australia</p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Wednesday, 29 July 2026
+      </div>
+      <div class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        The University of Queensland, Brisbane
+      </div>
+      <div class="meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        1:00 PM &ndash; 5:45 PM AEST
+      </div>
+      <div class="meta-item meta-tbc">Format: In-person / Hybrid &middot; TBC</div>
     </div>
+    <a href="#register" class="hero-cta">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Register Interest
+    </a>
+  </div>
 </section>
 
-<!-- ── ABOUT ── -->
+<!-- ABOUT -->
 <section class="section" id="about">
-    <div class="container">
-        <p class="section-label">About the Conference</p>
-        <h2 class="section-title">Context and Purpose</h2>
-        <div class="about-grid">
-            <div class="about-text">
-                <p>This conference is convened as the culminating feedback event for a joint research project titled "A Paradigmatic Shift in Public Service Delivery: Accessible, Inclusive, and Secure Digital Public Infrastructure", implemented by the Indian Council for Research on International Economic Relations (ICRIER) and the University of Queensland (UQ Cyber).</p>
-                <p>The project is funded by the Department of Foreign Affairs and Trade (DFAT), Australia, under the Australia-India Cyber and Critical Technology Partnership (AICCTP). It examines Digital Public Infrastructure (DPI) as a paradigmatic shift in public service delivery, generating policy-relevant evidence on how DPI can be designed and governed to deliver accessible, inclusive, and secure public services.</p>
-                <p>The research is structured around two focal use cases: India's Direct Benefit Transfer (DBT) ecosystem and healthcare provisioning through the Ayushman Bharat Digital Mission (ABDM), drawing broader lessons for the Indo-Pacific region. The conference will present preliminary findings from both case studies and seek structured expert feedback ahead of the final report.</p>
-            </div>
-            <div class="about-facts">
-                <div>
-                    <div class="fact-label">Project</div>
-                    <div class="fact-value">AICCTP Round 4</div>
-                </div>
-                <div>
-                    <div class="fact-label">Funder</div>
-                    <div class="fact-value">Department of Foreign Affairs and Trade (DFAT), Australia</div>
-                </div>
-                <div>
-                    <div class="fact-label">Implementing Organisations</div>
-                    <div class="fact-value">ICRIER and UQ Cyber</div>
-                </div>
-                <div>
-                    <div class="fact-label">Project Period</div>
-                    <div class="fact-value">July 2025 onwards</div>
-                </div>
-                <div>
-                    <div class="fact-label">Focal Use Cases</div>
-                    <div class="fact-value">Direct Benefit Transfer (DBT) and Healthcare (ABDM)</div>
-                </div>
-            </div>
-        </div>
+  <div class="inner">
+    <p class="section-label">About the Conference</p>
+    <h2 class="section-title">Context and Purpose</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Digital Public Infrastructure (DPI) is reshaping how governments deliver public services at scale. By combining digital identity, interoperable data systems, payment rails, and consent mechanisms, DPI can improve access, inclusion, efficiency, and security in essential services. At the same time, large-scale digital systems raise important questions about exclusion, privacy, cybersecurity, data governance, and citizen trust.</p>
+        <p>This conference is hosted by the UQ Cyber Research Centre, The University of Queensland, in partnership with ICRIER. It is the culminating feedback event for the AICCTP-funded project examining accessible, inclusive, and secure DPI in India and Australia, funded by the Department of Foreign Affairs and Trade under the Australia-India Cyber and Critical Technology Partnership.</p>
+        <p>The conference is a focused consultation forum. Participants will critically engage with the draft report's India-Australia comparative analysis and policy recommendations ahead of final publication, providing structured feedback on the project's DPI Evaluation Framework.</p>
+      </div>
+      <div class="about-facts">
+        <div><div class="fact-label">Event Type</div><div class="fact-value">Expert Feedback Conference</div></div>
+        <div><div class="fact-label">Host</div><div class="fact-value">UQ Cyber, The University of Queensland</div></div>
+        <div><div class="fact-label">Project</div><div class="fact-value">AICCTP Round 4</div></div>
+        <div><div class="fact-label">Funder</div><div class="fact-value">DFAT, Australia</div></div>
+        <div><div class="fact-label">Partner</div><div class="fact-value">ICRIER, New Delhi</div></div>
+        <div><div class="fact-label">Focal Use Cases</div><div class="fact-value">Direct Benefit Transfer (DBT) and ABDM Healthcare</div></div>
+      </div>
     </div>
+  </div>
 </section>
 
-<hr class="divider">
+<hr class="rule">
 
-<!-- ── PILLARS ── -->
-<section class="section alt" id="themes">
-    <div class="container">
-        <p class="section-label">Analytical Framework</p>
-        <h2 class="section-title">Three Research Pillars</h2>
-        <p class="section-lead">The project evaluates DPI-enabled public service delivery along three interconnected analytical dimensions.</p>
-        <div class="pillars-grid">
-            <div class="pillar-card">
-                <div class="pillar-number">01</div>
-                <div class="pillar-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                </div>
-                <div class="pillar-title">Accessibility and Inclusivity</div>
-                <p class="pillar-desc">How DPI systems can be designed to ensure equitable access and last-mile delivery across diverse populations, with particular attention to vulnerable and marginalised groups.</p>
-            </div>
-            <div class="pillar-card">
-                <div class="pillar-number">02</div>
-                <div class="pillar-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2">
-                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-                    </svg>
-                </div>
-                <div class="pillar-title">Efficiency</div>
-                <p class="pillar-desc">Assessment of administrative efficiency, fund flow integration, interoperability, and monitoring within large-scale DPI-enabled welfare and health architectures.</p>
-            </div>
-            <div class="pillar-card">
-                <div class="pillar-number">03</div>
-                <div class="pillar-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C49A3C" stroke-width="2">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                </div>
-                <div class="pillar-title">Security</div>
-                <p class="pillar-desc">Examination of cybersecurity risks, data governance frameworks, privacy-preserving architectures, and institutional safeguards within DPI-enabled public service delivery systems.</p>
-            </div>
+<!-- WORKSHOPS -->
+<section class="section pale" id="workshops">
+  <div class="inner">
+    <p class="section-label">Project Background</p>
+    <h2 class="section-title">Prior Panel Workshops</h2>
+    <p class="section-lead">Two stakeholder workshops were conducted in New Delhi as part of the primary research programme, engaging policymakers, technologists, civil society, and practitioners on each focal use case.</p>
+    <div class="workshops-grid">
+      <div class="workshop">
+        <div class="workshop-num">Workshop 1 of 2</div>
+        <div class="workshop-title">Transformation of Health Systems through Digital Public Infrastructure</div>
+        <div class="tags">
+          <span class="tag">9 January 2026</span>
+          <span class="tag">India Habitat Centre, New Delhi</span>
+          <span class="tag">42 Participants</span>
+          <span class="tag">Hybrid</span>
         </div>
+        <p class="workshop-body">A full-day hybrid workshop examining India's Ayushman Bharat Digital Mission alongside Australia's Digital Health system. Experts deliberated on interoperability, inclusion, governance, and cybersecurity in DPI-enabled health systems.</p>
+        <div class="workshop-links">
+          <a href="https://icrier.org/pdf/Transformation-of-Health-Systems-through-Digital-Public-Infrastructure.pdf" target="_blank" class="btn-sm">Outcome Document</a>
+        </div>
+      </div>
+      <div class="workshop">
+        <div class="workshop-num">Workshop 2 of 2</div>
+        <div class="workshop-title">Digital Public Infrastructure and Public Service Delivery: Inclusion. Efficiency. Security.</div>
+        <div class="tags">
+          <span class="tag">8 May 2026</span>
+          <span class="tag">India Habitat Centre, New Delhi</span>
+          <span class="tag">Roundtable</span>
+        </div>
+        <p class="workshop-body">A roundtable examining India's Direct Benefit Transfer ecosystem with comparative reflections on Australia's digital welfare architecture. Discussions covered the interaction between inclusion, efficiency, and cybersecurity in DPI-enabled welfare systems.</p>
+        <div class="workshop-links">
+          <a href="https://icrier.org/events/digital-public-infrastructure-and-public-service-delivery-inclusion-efficiency-security/" target="_blank" class="btn-sm">Event Page</a>
+          <a href="https://icrier.org/wp-content/uploads/2026/04/Concept-Note-DBT-Workshop-May-8.pdf" target="_blank" class="btn-sm muted">Concept Note</a>
+        </div>
+        <div class="video">
+          <iframe src="https://www.youtube.com/embed/pySgfpwEjzg?si=3FCny5DXazfJBwRV" allowfullscreen title="DBT Workshop Recording"></iframe>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ── WORKSHOPS ── -->
-<section class="section" id="workshops">
-    <div class="container">
-        <p class="section-label">Project Background</p>
-        <h2 class="section-title">Panel Workshops</h2>
-        <p class="section-lead">Two panel workshops were conducted as part of the primary research programme, engaging policymakers, technologists, researchers, civil society, and practitioners on each focal use case.</p>
-        <div class="workshops-grid">
-
-            <div class="workshop-card">
-                <div class="workshop-index">Workshop 1 of 2</div>
-                <div class="workshop-title">Transformation of Health Systems through Digital Public Infrastructure</div>
-                <div class="workshop-tags">
-                    <span class="tag">9 January 2026</span>
-                    <span class="tag">India Habitat Centre, New Delhi</span>
-                    <span class="tag">42 Participants</span>
-                    <span class="tag">Hybrid</span>
-                </div>
-                <p class="workshop-summary">A full-day hybrid workshop examining India's Ayushman Bharat Digital Mission (ABDM) as a focal DPI health case. Experts from government, the private sector, international organisations, and civil society deliberated on technical foundations, governance, public-private partnerships, and cybersecurity in DPI-enabled health systems.</p>
-                <div class="workshop-links">
-                    <a href="https://icrier.org/pdf/Transformation-of-Health-Systems-through-Digital-Public-Infrastructure.pdf" target="_blank" class="btn-outline">Outcome Document</a>
-                </div>
-            </div>
-
-            <div class="workshop-card">
-                <div class="workshop-index">Workshop 2 of 2</div>
-                <div class="workshop-title">Digital Public Infrastructure and Public Service Delivery: Inclusion. Efficiency. Security.</div>
-                <div class="workshop-tags">
-                    <span class="tag">8 May 2026</span>
-                    <span class="tag">India Habitat Centre, New Delhi</span>
-                    <span class="tag">Roundtable</span>
-                </div>
-                <p class="workshop-summary">A roundtable bringing together policymakers, technologists, civil society, and cybersecurity experts to deliberate on India's Direct Benefit Transfer (DBT) ecosystem. Discussions examined the interaction between inclusion, efficiency, and security in DPI-enabled welfare delivery systems.</p>
-                <div class="workshop-links">
-                    <a href="https://icrier.org/events/digital-public-infrastructure-and-public-service-delivery-inclusion-efficiency-security/" target="_blank" class="btn-outline">Event Page</a>
-                    <a href="https://icrier.org/wp-content/uploads/2026/04/Concept-Note-DBT-Workshop-May-8.pdf" target="_blank" class="btn-outline muted">Concept Note</a>
-                </div>
-                <div class="video-wrapper">
-                    <iframe src="https://www.youtube.com/embed/pySgfpwEjzg?si=3FCny5DXazfJBwRV" allowfullscreen title="DBT Workshop Recording"></iframe>
-                </div>
-            </div>
-
+<!-- THEMES -->
+<section class="section" id="themes">
+  <div class="inner">
+    <p class="section-label">Conference Structure</p>
+    <h2 class="section-title">Discussion Themes</h2>
+    <p class="section-lead">Three structured thematic sessions will guide expert feedback on the draft report's findings, comparative analysis, and policy recommendations.</p>
+    <div class="themes-list">
+      <div class="theme">
+        <div class="theme-header">
+          <span class="theme-num">Theme 1</span>
+          <span class="theme-title">Accessibility and Inclusivity</span>
         </div>
+        <p class="theme-body">Barriers to participation, last-mile access, digital literacy, intermediary support, and exclusion risks in DPI-enabled service delivery for diverse and vulnerable populations, including women, people with disabilities, remote communities, and digitally excluded users.</p>
+      </div>
+      <div class="theme">
+        <div class="theme-header">
+          <span class="theme-num">Theme 2</span>
+          <span class="theme-title">Efficiency</span>
+        </div>
+        <p class="theme-body">Administrative coordination, interoperability, cost reduction, transaction speed, and monitoring within DPI-enabled welfare and health systems, including the trade-offs between efficiency gains and fairness, due process, and human-centred service design.</p>
+      </div>
+      <div class="theme">
+        <div class="theme-header">
+          <span class="theme-num">Theme 3</span>
+          <span class="theme-title">Security, Privacy, and Trust</span>
+        </div>
+        <p class="theme-body">Cybersecurity risk, privacy-preserving design, consent mechanisms, data governance, incident response, grievance redressal, and institutional accountability. The discussion will consider how security can be embedded in DPI design without compromising accessibility or inclusion.</p>
+      </div>
     </div>
+  </div>
 </section>
 
-<hr class="divider">
+<hr class="rule">
 
-<!-- ── FEEDBACK THEMES ── -->
-<section class="section" id="feedback">
-    <div class="container">
-        <p class="section-label">Conference Structure</p>
-        <h2 class="section-title">Structured Feedback Themes</h2>
-        <p class="section-lead">The conference will seek expert feedback on the preliminary draft report, including findings from both case studies and the DPI Evaluation Framework developed as a key project output.</p>
-        <div class="ph-box">
-            <div class="ph-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A7A90" stroke-width="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                </svg>
-            </div>
-            <div class="ph-title">Feedback Questions and Discussion Themes</div>
-            <p class="ph-note">To be populated from the finalised concept note. Will include structured questions on the Australia vs. India comparative findings and the DPI Evaluation Framework.</p>
-        </div>
+<!-- AGENDA -->
+<section class="section pale" id="agenda">
+  <div class="inner">
+    <p class="section-label">Programme</p>
+    <h2 class="section-title">Conference Agenda</h2>
+    <p class="section-lead">Wednesday, 29 July 2026 &middot; The University of Queensland, Brisbane &middot; 1:00 PM to 5:45 PM AEST</p>
+    <div class="agenda-wrap">
+      <table class="agenda">
+        <thead>
+          <tr>
+            <th>AEST / Brisbane</th>
+            <th>IST / New Delhi</th>
+            <th>Session</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="time">1:00 PM &ndash; 1:15 PM</td><td class="time">8:30 AM &ndash; 8:45 AM</td><td>Registration and Refreshments</td></tr>
+          <tr><td class="time">1:15 PM &ndash; 1:30 PM</td><td class="time">8:45 AM &ndash; 9:00 AM</td><td>Welcome and Introductions</td></tr>
+          <tr><td class="time">1:30 PM &ndash; 1:45 PM</td><td class="time">9:00 AM &ndash; 9:15 AM</td><td class="session">Keynote Address 1 &mdash; To be confirmed</td></tr>
+          <tr><td class="time">1:45 PM &ndash; 2:00 PM</td><td class="time">9:15 AM &ndash; 9:30 AM</td><td class="session">Keynote Address 2 &mdash; To be confirmed</td></tr>
+          <tr><td class="time">2:00 PM &ndash; 2:15 PM</td><td class="time">9:30 AM &ndash; 9:45 AM</td><td class="session">Keynote Address 3 &mdash; To be confirmed</td></tr>
+          <tr><td class="time">2:15 PM &ndash; 2:30 PM</td><td class="time">9:45 AM &ndash; 10:00 AM</td><td class="session">Keynote Address 4 &mdash; To be confirmed</td></tr>
+          <tr><td class="time">2:30 PM &ndash; 2:45 PM</td><td class="time">10:00 AM &ndash; 10:15 AM</td><td class="session">Keynote Address 5 &mdash; To be confirmed</td></tr>
+          <tr><td class="time">2:45 PM &ndash; 3:30 PM</td><td class="time">10:15 AM &ndash; 11:00 AM</td><td class="session">Panel Discussion</td></tr>
+          <tr><td class="time">3:30 PM &ndash; 3:45 PM</td><td class="time">11:00 AM &ndash; 11:15 AM</td><td>Refreshment Break</td></tr>
+          <tr><td class="time">3:45 PM &ndash; 4:05 PM</td><td class="time">11:15 AM &ndash; 11:35 AM</td><td class="session">Presentation of Draft Report</td></tr>
+          <tr><td class="time">4:05 PM &ndash; 5:00 PM</td><td class="time">11:35 AM &ndash; 12:30 PM</td><td class="session">Structured Feedback Discussion</td></tr>
+          <tr><td class="time">5:00 PM &ndash; 5:15 PM</td><td class="time">12:30 PM &ndash; 12:45 PM</td><td class="session">Synthesis, Next Steps, and Closing</td></tr>
+          <tr><td class="time">5:15 PM &ndash; 5:45 PM</td><td class="time">12:45 PM &ndash; 1:15 PM</td><td>Networking Refreshments</td></tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </section>
 
-<!-- ── AGENDA ── -->
-<section class="section alt" id="agenda">
-    <div class="container">
-        <p class="section-label">Programme</p>
-        <h2 class="section-title">Conference Agenda</h2>
-        <p class="section-lead">The full programme is currently under preparation by the organising team.</p>
-        <div class="ph-box">
-            <div class="ph-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A7A90" stroke-width="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2"/>
-                    <line x1="16" y1="2" x2="16" y2="6"/>
-                    <line x1="8" y1="2" x2="8" y2="6"/>
-                    <line x1="3" y1="10" x2="21" y2="10"/>
-                </svg>
-            </div>
-            <div class="ph-title">Agenda Coming Soon</div>
-            <p class="ph-note">Session details, timing, and moderator assignments will be published here once the programme is finalised.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ── SPEAKERS ── -->
+<!-- SPEAKERS -->
 <section class="section" id="speakers">
-    <div class="container">
-        <p class="section-label">Invited Participants</p>
-        <h2 class="section-title">Keynote Speakers and Discussants</h2>
-        <p class="section-lead">Invitations to keynote speakers and invited participants are currently being extended. Speaker profiles will be listed here as confirmations are received.</p>
-        <div class="speakers-grid">
-            <div class="speaker-ph"><div class="sp-avatar"></div><div class="sp-name"></div><div class="sp-role"></div></div>
-            <div class="speaker-ph"><div class="sp-avatar"></div><div class="sp-name"></div><div class="sp-role"></div></div>
-            <div class="speaker-ph"><div class="sp-avatar"></div><div class="sp-name"></div><div class="sp-role"></div></div>
-            <div class="speaker-ph"><div class="sp-avatar"></div><div class="sp-name"></div><div class="sp-role"></div></div>
-        </div>
+  <div class="inner">
+    <p class="section-label">Invited Participants</p>
+    <h2 class="section-title">Speakers and Discussants</h2>
+    <div class="speakers-note">Invitations are currently being extended. Confirmed profiles will be added here as they are received.</div>
+    <div class="speakers-grid">
+      <div class="speaker-card">
+        <div class="speaker-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="speaker-role">Keynote Speaker 1</div>
+        <div class="speaker-name">To be confirmed</div>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="speaker-role">Keynote Speaker 2</div>
+        <div class="speaker-name">To be confirmed</div>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="speaker-role">Keynote Speaker 3</div>
+        <div class="speaker-name">To be confirmed</div>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="speaker-role">Keynote Speaker 4</div>
+        <div class="speaker-name">To be confirmed</div>
+      </div>
+      <div class="speaker-card">
+        <div class="speaker-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="speaker-role">Keynote Speaker 5</div>
+        <div class="speaker-name">To be confirmed</div>
+      </div>
+      <div class="speaker-card" style="background:var(--pale);border-style:solid;border-color:var(--rule);">
+        <div class="speaker-avatar" style="background:white;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="speaker-role">Panel Discussion</div>
+        <div class="speaker-name">All keynote speakers</div>
+      </div>
     </div>
+  </div>
 </section>
 
-<hr class="divider">
+<hr class="rule">
 
-<!-- ── DOWNLOADS ── -->
-<section class="section" id="downloads">
-    <div class="container">
-        <p class="section-label">Resources</p>
-        <h2 class="section-title">Downloads</h2>
-        <div class="downloads-list">
-            <div class="dl-item">
-                <div class="dl-info">
-                    <span class="dl-badge">PDF</span>
-                    <div>
-                        <div class="dl-name">Health Workshop Outcome Document</div>
-                        <div class="dl-desc">Workshop 1 · January 2026 · ICRIER and UQ Cyber</div>
-                    </div>
-                </div>
-                <a href="https://icrier.org/pdf/Transformation-of-Health-Systems-through-Digital-Public-Infrastructure.pdf" target="_blank" class="dl-action">Download</a>
-            </div>
-            <div class="dl-item">
-                <div class="dl-info">
-                    <span class="dl-badge">PDF</span>
-                    <div>
-                        <div class="dl-name">DBT Workshop Concept Note</div>
-                        <div class="dl-desc">Workshop 2 · May 2026 · ICRIER</div>
-                    </div>
-                </div>
-                <a href="https://icrier.org/wp-content/uploads/2026/04/Concept-Note-DBT-Workshop-May-8.pdf" target="_blank" class="dl-action">Download</a>
-            </div>
-            <div class="dl-item">
-                <div class="dl-info">
-                    <span class="dl-badge">PDF</span>
-                    <div>
-                        <div class="dl-name">Conference Concept Note</div>
-                        <div class="dl-desc">Feedback Conference · 29 July 2026 · Pending finalisation</div>
-                    </div>
-                </div>
-                <span class="dl-action soon">Coming Soon</span>
-            </div>
-            <div class="dl-item">
-                <div class="dl-info">
-                    <span class="dl-badge">PDF</span>
-                    <div>
-                        <div class="dl-name">Conference Agenda</div>
-                        <div class="dl-desc">Full programme · Pending finalisation</div>
-                    </div>
-                </div>
-                <span class="dl-action soon">Coming Soon</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ── PARTNERS ── -->
+<!-- PARTNERS -->
 <section class="partners" id="partners">
-    <div class="container">
-        <p class="section-label">Organising Partners</p>
-        <h2 class="section-title">Institutions</h2>
-        <div class="partners-grid" style="margin-top:48px">
-            <div class="partner-card">
-                <div class="partner-role">Implementing Organisation</div>
-                <div class="partner-name">ICRIER / IPCIDE</div>
-                <div class="partner-desc">Indian Council for Research on International Economic Relations, ICRIER Prosus Centre for Internet and Digital Economy, New Delhi</div>
-            </div>
-            <div class="partner-card">
-                <div class="partner-role">Partner Organisation</div>
-                <div class="partner-name">UQ Cyber</div>
-                <div class="partner-desc">School of Electrical Engineering and Computer Science, The University of Queensland, Brisbane, Australia</div>
-            </div>
-            <div class="partner-card">
-                <div class="partner-role">Funder</div>
-                <div class="partner-name">DFAT / AICCTP</div>
-                <div class="partner-desc">Department of Foreign Affairs and Trade, Australia. Australia-India Cyber and Critical Technology Partnership, Round 4.</div>
-            </div>
-            <div class="partner-card">
-                <div class="partner-role">Supporting Organisation</div>
-                <div class="partner-name">Gates Foundation</div>
-                <div class="partner-desc">Provided support for the Health Workshop on Transformation of Health Systems through Digital Public Infrastructure, January 2026.</div>
-            </div>
-        </div>
+  <div class="inner">
+    <p class="section-label">Organising Partners</p>
+    <h2 class="section-title">Institutions</h2>
+    <div class="partners-grid">
+      <div class="partner lead">
+        <div class="partner-role">Host Organisation</div>
+        <div class="partner-logo"><img src="University-of-Queensland-UQ-logo.jpg" alt="The University of Queensland" onerror="this.src='https://static.uq.net.au/v11/logos/corporate/uq-logo--reversed.svg'"></div>
+        <div class="partner-name">UQ Cyber Research Centre</div>
+        <div class="partner-desc">School of Electrical Engineering and Computer Science, The University of Queensland, Brisbane. A leading centre for cybersecurity research and education in the Asia-Pacific region.</div>
+      </div>
+      <div class="partner">
+        <div class="partner-role">Implementing Partner</div>
+        <div class="partner-logo"><img src="https://icrier.org/wp-content/themes/icrier/images/logo.png" alt="ICRIER"></div>
+        <div class="partner-name">ICRIER / IPCIDE</div>
+        <div class="partner-desc">Indian Council for Research on International Economic Relations. ICRIER Prosus Centre for Internet and Digital Economy, New Delhi.</div>
+      </div>
+      <div class="partner">
+        <div class="partner-role">Funder</div>
+        <div class="partner-name">DFAT / AICCTP</div>
+        <div class="partner-desc">Department of Foreign Affairs and Trade, Australia. Australia-India Cyber and Critical Technology Partnership, Round 4.</div>
+      </div>
+      <div class="partner">
+        <div class="partner-role">Supporting Organisation</div>
+        <div class="partner-name">Gates Foundation</div>
+        <div class="partner-desc">Supported the Health Workshop on Transformation of Health Systems through Digital Public Infrastructure, January 2026.</div>
+      </div>
     </div>
+  </div>
 </section>
 
-<!-- ── REGISTER ── -->
+<!-- REGISTER -->
 <section class="register" id="register">
-    <div class="container">
-        <p class="section-label">Participation</p>
-        <h2 class="section-title">Register Your Interest</h2>
-        <p class="section-lead">This is an invitation-only event. If you would like to express interest in attending, please contact the organising team. Further details on registration, format, and logistics will be shared with confirmed participants.</p>
-        <a href="mailto:[PLACEHOLDER: organising team email]" class="btn-primary">Express Interest</a>
-        <p class="register-note">Registration deadline: [To be confirmed]</p>
-        <div class="register-contact">
-            For enquiries, contact: <a href="mailto:[PLACEHOLDER: organising team email]">[PLACEHOLDER: organising team email]</a>
-        </div>
-    </div>
+  <div class="inner">
+    <p class="section-label">Participation</p>
+    <h2 class="section-title">Register Your Interest</h2>
+    <p class="section-lead">We welcome participation from policymakers, technologists, researchers, civil society organisations, and practitioners working across digital public infrastructure, cybersecurity, welfare delivery, and digital health. Please contact the organising team to register or for further information.</p>
+    <a href="mailto:priyanka.singh@uq.edu.au" class="hero-cta" style="margin: 0 auto;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      Register Now
+    </a>
+    <p class="register-note">Registration deadline: [To be confirmed]</p>
+    <div class="register-contact">Enquiries: <a href="mailto:priyanka.singh@uq.edu.au">priyanka.singh@uq.edu.au</a></div>
+  </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
-    <div class="footer-brand">DPI Feedback Conference 2026</div>
-    <div>Jointly organised by ICRIER and UQ Cyber · Funded by DFAT under AICCTP</div>
-    <div>29 July 2026 · Brisbane, Australia</div>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <img src="University-of-Queensland-UQ-logo.jpg" alt="The University of Queensland" class="footer-brand" onerror="this.src='https://static.uq.net.au/v11/logos/corporate/uq-logo--reversed.svg'" style="height:26px;display:block;margin-bottom:8px;">
+        <p class="footer-tag">UQ Cyber Research Centre &middot; School of EECS &middot; The University of Queensland</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-head">Conference</div>
+          <a href="#about">About</a>
+          <a href="#themes">Discussion Themes</a>
+          <a href="#agenda">Agenda</a>
+          <a href="#speakers">Speakers</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-head">Resources</div>
+          <a href="https://icrier.org/pdf/Transformation-of-Health-Systems-through-Digital-Public-Infrastructure.pdf" target="_blank">Health Outcome Document</a>
+          <a href="https://icrier.org/events/digital-public-infrastructure-and-public-service-delivery-inclusion-efficiency-security/" target="_blank">DBT Workshop</a>
+          <a href="#register">Register</a>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-head">Partners</div>
+          <a href="https://www.cyber.uq.edu.au" target="_blank">UQ Cyber</a>
+          <a href="https://icrier.org" target="_blank">ICRIER</a>
+          <a href="https://www.dfat.gov.au" target="_blank">DFAT</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-ack">UQ acknowledges the Traditional Owners and their custodianship of the lands on which UQ is situated.</p>
+      <div class="footer-legal">&copy; The University of Queensland &middot; ABN 63 942 912 684<br>Governing for Trust &middot; 29 July 2026</div>
+    </div>
+  </div>
 </footer>
 
 </body>
