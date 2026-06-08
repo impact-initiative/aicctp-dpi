@@ -133,8 +133,14 @@
     .speaker-card { border: 1px dashed var(--rule); padding: 24px 18px; text-align: center; }
     .speaker-avatar { width: 60px; height: 60px; border-radius: 50%; background: var(--pale); display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; }
     .speaker-avatar svg { opacity: 0.35; }
+    .speaker-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; object-position: center top; margin: 0 auto 12px; display: block; border: 2px solid var(--rule); }
     .speaker-role { font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; color: var(--purple); margin-bottom: 4px; }
     .speaker-name { font-family: 'Cormorant Garamond', serif; font-size: 15px; color: var(--soft); font-style: italic; }
+    .speaker-card.confirmed { border-style: solid; border-color: var(--rule); }
+    .speaker-card.confirmed .speaker-name { color: var(--deep); font-style: normal; font-size: 17px; font-weight: 600; }
+    .speaker-title { font-size: 12px; color: var(--soft); line-height: 1.5; margin: 6px 0 8px; }
+    .speaker-link { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--purple); text-decoration: none; }
+    .speaker-link:hover { text-decoration: underline; }
 
     /* ── DOWNLOADS ── */
     .dl-list { display: flex; flex-direction: column; gap: 1px; }
@@ -386,7 +392,7 @@
         </thead>
         <tbody>
           <tr><td class="time">1:00 PM &ndash; 1:20 PM</td><td class="time">8:30 AM &ndash; 8:50 AM</td><td>Welcome and Introductions</td></tr>
-          <tr><td class="time">1:20 PM &ndash; 1:40 PM</td><td class="time">8:50 AM &ndash; 9:10 AM</td><td class="session">Presentation of Draft Report</td></tr>
+          <tr><td class="time">1:20 PM &ndash; 1:40 PM</td><td class="time">8:50 AM &ndash; 9:10 AM</td><td class="session">Introductory Talk &mdash; Professor Ryan Ko</td></tr>
           <tr><td class="time">1:40 PM &ndash; 3:10 PM</td><td class="time">9:10 AM &ndash; 10:40 AM</td><td class="session">Panel &mdash; Structured Feedback Discussion</td></tr>
           <tr><td class="time">3:10 PM &ndash; 3:40 PM</td><td class="time">10:40 AM &ndash; 11:10 AM</td><td>Refreshment Break</td></tr>
           <tr><td class="time">3:40 PM &ndash; 4:00 PM</td><td class="time">11:10 AM &ndash; 11:30 AM</td><td class="session">Keynote Address 1 &mdash; To be announced</td></tr>
@@ -407,6 +413,14 @@
     <h2 class="section-title">Speakers and Discussants</h2>
     <div class="speakers-note">Invitations are currently being extended. Confirmed profiles will be added here as they are received.</div>
     <div class="speakers-grid">
+      <div class="speaker-card confirmed">
+        <img class="speaker-photo" src="Ivano-Bongiovanni.jpeg" alt="Dr Ivano Bongiovanni"
+          onerror="this.onerror=null;this.src='Ivano-Bongiovanni.jpg'">
+        <div class="speaker-role">Speaker &amp; Panellist</div>
+        <div class="speaker-name">Dr Ivano Bongiovanni</div>
+        <div class="speaker-title">Senior Lecturer in Information Security, Governance and Leadership, UQ Business School; General Manager, AUSCERT; member of UQ Cyber</div>
+        <a href="https://business.uq.edu.au/profile/7972/ivano-bongiovanni" target="_blank" class="speaker-link">Profile</a>
+      </div>
       <div class="speaker-card">
         <div class="speaker-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div class="speaker-role">Keynote Speaker 1</div>
@@ -422,15 +436,13 @@
         <div class="speaker-role">Lightning Talks</div>
         <div class="speaker-name">To be confirmed</div>
       </div>
-      <div class="speaker-card" style="background:var(--pale);border-style:solid;border-color:var(--rule);">
-        <div class="speaker-avatar" style="background:white;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="speaker-role">Panel Discussant</div>
-        <div class="speaker-name">To be confirmed</div>
-      </div>
-      <div class="speaker-card" style="background:var(--pale);border-style:solid;border-color:var(--rule);">
-        <div class="speaker-avatar" style="background:white;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div class="speaker-role">Panel Discussant</div>
-        <div class="speaker-name">To be confirmed</div>
+      <div class="speaker-card confirmed">
+        <img class="speaker-photo" src="Stan-Karanasios.jpeg" alt="Professor Stan Karanasios"
+          onerror="this.onerror=null;this.src='Stan-Karanasios.jpg'">
+        <div class="speaker-role">Panellist</div>
+        <div class="speaker-name">Professor Stan Karanasios</div>
+        <div class="speaker-title">Professor in Information Systems, UQ Business School; affiliate of UQ Cyber Research Centre and the Centre for Enterprise AI</div>
+        <a href="https://business.uq.edu.au/profile/8040/stan-karanasios" target="_blank" class="speaker-link">Profile</a>
       </div>
       <div class="speaker-card" style="background:var(--pale);border-style:solid;border-color:var(--rule);">
         <div class="speaker-avatar" style="background:white;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
@@ -460,15 +472,23 @@
         &ensp;
         <a href="mailto:priyanka.singh@uq.edu.au" class="org-link">Email</a>
       </div>
-      <div class="org-card org-tbc">
-        <div class="org-photo-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <div class="org-name">To be confirmed</div>
-        <div class="org-title">Lead Organiser</div>
+      <div class="org-card">
+        <img class="org-photo" src="Ryan-ko.jpeg" alt="Professor Ryan Ko"
+          onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/Ryan-ko.jpeg'">
+        <div class="org-name">Professor Ryan Ko</div>
+        <div class="org-title">Director, UQ Cyber Research Centre<br>Faculty of Engineering, Architecture and Information Technology<br>The University of Queensland</div>
+        <a href="https://about.uq.edu.au/experts/23784" target="_blank" class="org-link">Profile</a>
+        &ensp;
+        <a href="mailto:ryan.ko@uq.edu.au" class="org-link">Email</a>
       </div>
-      <div class="org-card org-tbc">
-        <div class="org-photo-ph"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <div class="org-name">To be confirmed</div>
-        <div class="org-title">Lead Organiser</div>
+      <div class="org-card">
+        <img class="org-photo" src="Xue-li.jpeg" alt="Professor Xue Li"
+          onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/Xue-li.jpeg'">
+        <div class="org-name">Professor Xue Li</div>
+        <div class="org-title">Professor, School of Electrical Engineering and Computer Science<br>Faculty of Engineering, Architecture and Information Technology<br>The University of Queensland</div>
+        <a href="https://about.uq.edu.au/experts/973" target="_blank" class="org-link">Profile</a>
+        &ensp;
+        <a href="mailto:xueli@eecs.uq.edu.au" class="org-link">Email</a>
       </div>
     </div>
 
