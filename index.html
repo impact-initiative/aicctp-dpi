@@ -17,12 +17,9 @@
       --mid:     #4A4065;
       --soft:    #7A7090;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Source Sans 3', sans-serif; background: var(--white); color: var(--text); font-size: 16px; line-height: 1.7; }
-
-    /* ── NAV ── */
     nav { background: var(--deep); position: sticky; top: 0; z-index: 100; }
     .nav-inner { max-width: 1060px; margin: 0 auto; padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
     .nav-brand { display: flex; align-items: center; gap: 16px; text-decoration: none; }
@@ -36,46 +33,18 @@
     .nav-partner { display: flex; align-items: center; gap: 8px; padding-left: 24px; border-left: 1px solid rgba(255,255,255,0.1); }
     .nav-partner-lbl { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.10em; color: rgba(255,255,255,0.3); }
     .nav-partner img { height: 18px; filter: brightness(0) invert(1); opacity: 0.5; }
-
-    /* ── TEXTURE ── */
-    body {
-      background-color: var(--white);
-      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='0.7' fill='%2351247A' fill-opacity='0.055'/%3E%3C/svg%3E");
-    }
-    .section.pale {
-      background-color: var(--pale);
-      background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='0.7' fill='%2351247A' fill-opacity='0.07'/%3E%3C/svg%3E");
-    }
-
-    /* ── HERO ── */
+    body { background-color: var(--white); background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='0.7' fill='%2351247A' fill-opacity='0.055'/%3E%3C/svg%3E"); }
+    .section.pale { background-color: var(--pale); background-image: url("data:image/svg+xml,%3Csvg width='28' height='28' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='14' cy='14' r='0.7' fill='%2351247A' fill-opacity='0.07'/%3E%3C/svg%3E"); }
     .hero { position: relative; overflow: hidden; padding: 80px 40px 72px; background: var(--deep); }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background-image: url('uq-campus.jpg'),
-        url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Part_of_the_Great_Court_of_the_University_of_Queensland_July_2015.jpg/1280px-Part_of_the_Great_Court_of_the_University_of_Queensland_July_2015.jpg');
-      background-size: cover; background-position: center 40%;
-      filter: blur(5px) brightness(0.38) saturate(0.75);
-      transform: scale(1.06);
-      z-index: 0;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(170deg, rgba(60,26,107,0.45) 0%, rgba(20,6,46,0.60) 100%);
-      z-index: 0;
-    }
+    .hero::before { content: ''; position: absolute; inset: 0; background-image: url('uq-campus.jpg'), url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Part_of_the_Great_Court_of_the_University_of_Queensland_July_2015.jpg/1280px-Part_of_the_Great_Court_of_the_University_of_Queensland_July_2015.jpg'); background-size: cover; background-position: center 40%; filter: blur(5px) brightness(0.38) saturate(0.75); transform: scale(1.06); z-index: 0; }
+    .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(170deg, rgba(60,26,107,0.45) 0%, rgba(20,6,46,0.60) 100%); z-index: 0; }
     .hero-inner { max-width: 1060px; margin: 0 auto; position: relative; z-index: 1; }
-    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5.5vw, 66px); font-weight: 700; line-height: 1.08; color: white; margin-bottom: 10px; letter-spacing: -0.02em; }
-    .hero h1 em { font-style: italic; color: rgba(255,255,255,0.6); }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(38px, 5.5vw, 66px); font-weight: 700; line-height: 1.08; color: white; margin-bottom: 32px; letter-spacing: -0.02em; }
     .hero-meta { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 36px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 28px; }
     .meta-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: rgba(255,255,255,0.65); }
     .meta-item svg { opacity: 0.5; flex-shrink: 0; }
-    .meta-tbc { color: rgba(255,255,255,0.35); font-style: italic; }
     .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--purple); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 12px 24px; border-radius: 2px; text-decoration: none; transition: background 0.2s; }
     .hero-cta:hover { background: #EDE8F5; }
-
-    /* ── SHARED ── */
     .section { padding: 80px 40px; }
     .section.pale { }
     .inner { max-width: 1060px; margin: 0 auto; }
@@ -83,16 +52,12 @@
     .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(26px, 3vw, 38px); font-weight: 700; color: var(--deep); line-height: 1.18; margin-bottom: 14px; letter-spacing: -0.01em; }
     .section-lead { font-size: 15.5px; color: var(--mid); max-width: 660px; line-height: 1.8; margin-bottom: 44px; }
     hr.rule { border: none; border-top: 1px solid var(--rule); }
-
-    /* ── ABOUT ── */
     .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 64px; align-items: start; }
     .about-text p { font-size: 15px; color: var(--mid); line-height: 1.82; margin-bottom: 14px; }
     .about-text p:last-child { margin-bottom: 0; }
     .about-facts { border-left: 2px solid var(--rule); padding-left: 28px; display: flex; flex-direction: column; gap: 22px; }
     .fact-label { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); margin-bottom: 2px; }
     .fact-value { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--deep); line-height: 1.3; }
-
-    /* ── WORKSHOPS ── */
     .workshops-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
     .workshop { border: 1px solid var(--rule); padding: 30px; background: white; }
     .workshop-num { font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 10px; }
@@ -107,8 +72,6 @@
     .btn-sm.muted:hover { background: var(--pale); border-color: var(--purple); color: var(--purple); }
     .video { aspect-ratio: 16/9; }
     .video iframe { width: 100%; height: 100%; border: 0; }
-
-    /* ── THEMES ── */
     .themes-list { display: flex; flex-direction: column; gap: 1px; }
     .theme { background: white; padding: 26px 32px; border-left: 3px solid var(--rule); }
     .theme:hover { border-color: var(--purple); }
@@ -116,8 +79,6 @@
     .theme-num { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); flex-shrink: 0; }
     .theme-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--deep); }
     .theme-body { font-size: 14.5px; color: var(--mid); line-height: 1.76; padding-left: 62px; }
-
-    /* ── AGENDA ── */
     .agenda-wrap { overflow-x: auto; }
     .agenda { width: 100%; border-collapse: collapse; font-size: 13.5px; }
     .agenda thead th { background: var(--deep); color: rgba(255,255,255,0.85); padding: 11px 16px; text-align: left; font-size: 10.5px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; }
@@ -126,8 +87,6 @@
     .agenda td { padding: 12px 16px; border-bottom: 1px solid var(--rule); color: var(--mid); vertical-align: top; }
     .agenda td.time { white-space: nowrap; font-weight: 600; color: var(--text); font-size: 12.5px; }
     .agenda td.session { color: var(--text); }
-
-    /* ── SPEAKERS ── */
     .speakers-note { font-size: 14px; color: var(--mid); background: var(--pale); border-left: 3px solid var(--purple); padding: 14px 20px; margin-bottom: 28px; }
     .speakers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .speaker-card { border: 1px dashed var(--rule); padding: 24px 18px; text-align: center; }
@@ -141,8 +100,6 @@
     .speaker-title { font-size: 12px; color: var(--soft); line-height: 1.5; margin: 6px 0 8px; }
     .speaker-link { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--purple); text-decoration: none; }
     .speaker-link:hover { text-decoration: underline; }
-
-    /* ── DOWNLOADS ── */
     .dl-list { display: flex; flex-direction: column; gap: 1px; }
     .dl-row { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; background: white; border-left: 3px solid transparent; transition: border-color 0.18s, background 0.18s; }
     .dl-row:hover { border-color: var(--purple); background: var(--pale); }
@@ -152,8 +109,6 @@
     .dl-sub { font-size: 12px; color: var(--soft); margin-top: 1px; }
     .dl-action { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--purple); text-decoration: none; flex-shrink: 0; }
     .dl-action.soon { color: var(--soft); pointer-events: none; }
-
-    /* ── PARTNERS ── */
     .partners { background: var(--deep); padding: 72px 40px; }
     .partners .section-label { color: rgba(200,166,232,0.75); }
     .partners .section-title { color: white; }
@@ -165,18 +120,14 @@
     .partner-logo img { max-height: 36px; max-width: 150px; object-fit: contain; opacity: 0.80; filter: brightness(0) invert(1); }
     .partner-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: white; margin-bottom: 6px; line-height: 1.25; }
     .partner-desc { font-size: 12px; color: rgba(255,255,255,0.38); line-height: 1.6; }
-
-    /* ── REGISTER ── */
     .register { background: var(--pale); padding: 80px 40px; text-align: center; }
     .register .section-title { margin: 0 auto 12px; }
     .register .section-lead { margin: 0 auto 28px; }
     .register-note { font-size: 12.5px; color: var(--soft); margin-top: 10px; }
     .register-contact { margin-top: 20px; font-size: 13.5px; color: var(--mid); }
     .register-contact a { color: var(--purple); font-weight: 600; text-decoration: none; }
-
-    /* ── ORGANISERS ── */
     .org-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); margin-bottom: 20px; padding-bottom: 8px; border-bottom: 1px solid var(--rule); }
-    .org-lead-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 28px; }
+    .org-lead-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 28px; }
     .org-support-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
     .org-card { padding: 24px 20px; background: white; border: 1px solid var(--rule); text-align: center; }
     .org-card.support { border-style: dashed; background: transparent; }
@@ -187,9 +138,6 @@
     .org-title { font-size: 12.5px; color: var(--soft); line-height: 1.5; margin-bottom: 8px; }
     .org-link { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--purple); text-decoration: none; }
     .org-link:hover { text-decoration: underline; }
-    .org-tbc .org-name { font-style: italic; color: var(--soft); font-size: 15px; }
-
-    /* ── FOOTER ── */
     footer { background: #160829; padding: 36px 40px; }
     .footer-inner { max-width: 1060px; margin: 0 auto; }
     .footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 24px; border-bottom: 1px solid rgba(255,255,255,0.07); margin-bottom: 18px; gap: 24px; }
@@ -202,7 +150,6 @@
     .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; font-size: 11.5px; }
     .footer-ack { color: rgba(255,255,255,0.22); max-width: 500px; line-height: 1.6; }
     .footer-legal { color: rgba(255,255,255,0.18); text-align: right; }
-
     @media (max-width: 900px) {
       .about-grid, .workshops-grid { grid-template-columns: 1fr; }
       .partners-grid { grid-template-columns: 1fr 1fr; }
@@ -222,7 +169,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#home" class="nav-brand">
@@ -248,7 +194,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-inner">
     <h1>Governing for Trust: Inclusive, Efficient, and Secure Digital Public Infrastructure</h1>
@@ -274,7 +219,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="section" id="about">
   <div class="inner">
     <p class="section-label">About the Conference</p>
@@ -299,7 +243,6 @@
 
 <hr class="rule">
 
-<!-- WORKSHOPS -->
 <section class="section pale" id="workshops">
   <div class="inner">
     <p class="section-label">Project Background</p>
@@ -309,39 +252,25 @@
       <div class="workshop">
         <div class="workshop-num">Workshop 1 of 2</div>
         <div class="workshop-title">Transformation of Health Systems through Digital Public Infrastructure</div>
-        <div class="tags">
-          <span class="tag">9 January 2026</span>
-          <span class="tag">India Habitat Centre, New Delhi</span>
-          <span class="tag">42 Participants</span>
-          <span class="tag">Hybrid</span>
-        </div>
+        <div class="tags"><span class="tag">9 January 2026</span><span class="tag">India Habitat Centre, New Delhi</span><span class="tag">42 Participants</span><span class="tag">Hybrid</span></div>
         <p class="workshop-body">A full-day hybrid workshop examining India's Ayushman Bharat Digital Mission alongside Australia's Digital Health system. Experts deliberated on interoperability, inclusion, governance, and cybersecurity in DPI-enabled health systems.</p>
-        <div class="workshop-links">
-          <a href="https://icrier.org/pdf/Transformation-of-Health-Systems-through-Digital-Public-Infrastructure.pdf" target="_blank" class="btn-sm">Outcome Document</a>
-        </div>
+        <div class="workshop-links"><a href="https://icrier.org/pdf/Transformation-of-Health-Systems-through-Digital-Public-Infrastructure.pdf" target="_blank" class="btn-sm">Outcome Document</a></div>
       </div>
       <div class="workshop">
         <div class="workshop-num">Workshop 2 of 2</div>
         <div class="workshop-title">Digital Public Infrastructure and Public Service Delivery: Inclusion. Efficiency. Security.</div>
-        <div class="tags">
-          <span class="tag">8 May 2026</span>
-          <span class="tag">India Habitat Centre, New Delhi</span>
-          <span class="tag">Roundtable</span>
-        </div>
+        <div class="tags"><span class="tag">8 May 2026</span><span class="tag">India Habitat Centre, New Delhi</span><span class="tag">Roundtable</span></div>
         <p class="workshop-body">A roundtable examining India's Direct Benefit Transfer ecosystem with comparative reflections on Australia's digital welfare architecture. Discussions covered the interaction between inclusion, efficiency, and cybersecurity in DPI-enabled welfare systems.</p>
         <div class="workshop-links">
           <a href="https://icrier.org/events/digital-public-infrastructure-and-public-service-delivery-inclusion-efficiency-security/" target="_blank" class="btn-sm">Event Page</a>
           <a href="https://icrier.org/wp-content/uploads/2026/04/Concept-Note-DBT-Workshop-May-8.pdf" target="_blank" class="btn-sm muted">Concept Note</a>
         </div>
-        <div class="video">
-          <iframe src="https://www.youtube.com/embed/pySgfpwEjzg?si=3FCny5DXazfJBwRV" allowfullscreen title="DBT Workshop Recording"></iframe>
-        </div>
+        <div class="video"><iframe src="https://www.youtube.com/embed/pySgfpwEjzg?si=3FCny5DXazfJBwRV" allowfullscreen title="DBT Workshop Recording"></iframe></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- THEMES -->
 <section class="section" id="themes">
   <div class="inner">
     <p class="section-label">Conference Structure</p>
@@ -349,24 +278,15 @@
     <p class="section-lead">Three structured thematic sessions will guide expert feedback on the draft report's findings, comparative analysis, and policy recommendations.</p>
     <div class="themes-list">
       <div class="theme">
-        <div class="theme-header">
-          <span class="theme-num">Theme 1</span>
-          <span class="theme-title">Accessibility and Inclusivity</span>
-        </div>
+        <div class="theme-header"><span class="theme-num">Theme 1</span><span class="theme-title">Accessibility and Inclusivity</span></div>
         <p class="theme-body">Barriers to participation, last-mile access, digital literacy, intermediary support, and exclusion risks in DPI-enabled service delivery for diverse and vulnerable populations, including women, people with disabilities, remote communities, and digitally excluded users.</p>
       </div>
       <div class="theme">
-        <div class="theme-header">
-          <span class="theme-num">Theme 2</span>
-          <span class="theme-title">Efficiency</span>
-        </div>
+        <div class="theme-header"><span class="theme-num">Theme 2</span><span class="theme-title">Efficiency</span></div>
         <p class="theme-body">Administrative coordination, interoperability, cost reduction, transaction speed, and monitoring within DPI-enabled welfare and health systems, including the trade-offs between efficiency gains and fairness, due process, and human-centred service design.</p>
       </div>
       <div class="theme">
-        <div class="theme-header">
-          <span class="theme-num">Theme 3</span>
-          <span class="theme-title">Security, Privacy, and Trust</span>
-        </div>
+        <div class="theme-header"><span class="theme-num">Theme 3</span><span class="theme-title">Security, Privacy, and Trust</span></div>
         <p class="theme-body">Cybersecurity risk, privacy-preserving design, consent mechanisms, data governance, incident response, grievance redressal, and institutional accountability. The discussion will consider how security can be embedded in DPI design without compromising accessibility or inclusion.</p>
       </div>
     </div>
@@ -382,61 +302,75 @@
     <h2 class="section-title">Speakers and Discussants</h2>
     <div class="speakers-note">Invitations are currently being extended. Confirmed profiles will be added here as they are received.</div>
     <div class="speakers-grid">
+
       <div class="speaker-card confirmed">
-        <img class="speaker-photo" src="Ryan-ko.jpeg" alt="Professor Ryan Ko"
-          onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/Ryan-ko.jpeg'">
+        <img class="speaker-photo" src="Ryan-ko.jpeg" alt="Professor Ryan Ko" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/Ryan-ko.jpeg'">
         <div class="speaker-role">Opening Talk</div>
         <div class="speaker-name">Professor Ryan Ko</div>
         <div class="speaker-title">Director, UQ Cyber Research Centre; Faculty of Engineering, Architecture and Information Technology, The University of Queensland</div>
         <a href="https://about.uq.edu.au/experts/23784" target="_blank" class="speaker-link">Profile</a>
       </div>
+
       <div class="speaker-card confirmed">
-        <img class="speaker-photo" src="Brian-head.jpeg" alt="Professor Brian Head"
-          onerror="this.onerror=null;this.src='Brian-head.jpg'">
+        <img class="speaker-photo" src="Michelle-lee.jpg" alt="Dr Michelle Lee JP" onerror="this.onerror=null;">
+        <div class="speaker-role">Keynote Speaker</div>
+        <div class="speaker-name">Dr. Michelle Lee JP</div>
+        <div class="speaker-title">Managing Director, M&amp;M Projects Management; Founder, Medical eHealth Australia (MeHA)</div>
+        <a href="https://www.linkedin.com/in/dr-michelle-lee-jp/" target="_blank" class="speaker-link">LinkedIn</a>
+      </div>
+
+      <div class="speaker-card confirmed">
+        <img class="speaker-photo" src="Ivano-bongiovanni.jpeg" alt="Dr Ivano Bongiovanni" onerror="this.onerror=null;this.src='Ivano-bongiovanni.jpg'">
+        <div class="speaker-role">Keynote Speaker &amp; Panellist</div>
+        <div class="speaker-name">Dr Ivano Bongiovanni</div>
+        <div class="speaker-title">Senior Lecturer in Information Security, Governance and Leadership, UQ Business School; General Manager, AUSCERT; member of UQ Cyber</div>
+        <a href="https://business.uq.edu.au/profile/7972/ivano-bongiovanni" target="_blank" class="speaker-link">Profile</a>
+      </div>
+
+      <div class="speaker-card confirmed">
+        <img class="speaker-photo" src="Brian-head.jpeg" alt="Professor Brian Head" onerror="this.onerror=null;this.src='Brian-head.jpg'">
         <div class="speaker-role">Panellist</div>
         <div class="speaker-name">Professor Brian Head</div>
         <div class="speaker-title">Professor of Political Science and Public Policy, School of Political Science and International Studies, The University of Queensland</div>
         <a href="https://polsis.uq.edu.au/profile/1908/brian-head" target="_blank" class="speaker-link">Profile</a>
       </div>
+
       <div class="speaker-card confirmed">
-        <img class="speaker-photo" src="Stan-karanasios.jpeg" alt="Professor Stan Karanasios"
-          onerror="this.onerror=null;this.src='Stan-karanasios.jpg'">
+        <img class="speaker-photo" src="Stan-karanasios.jpeg" alt="Professor Stan Karanasios" onerror="this.onerror=null;this.src='Stan-karanasios.jpg'">
         <div class="speaker-role">Panellist</div>
         <div class="speaker-name">Professor Stan Karanasios</div>
         <div class="speaker-title">Professor in Information Systems, UQ Business School; affiliate of UQ Cyber Research Centre and the Centre for Enterprise AI</div>
         <a href="https://business.uq.edu.au/profile/8040/stan-karanasios" target="_blank" class="speaker-link">Profile</a>
       </div>
+
       <div class="speaker-card confirmed">
-        <img class="speaker-photo" src="Ivano-bongiovanni.jpeg" alt="Dr Ivano Bongiovanni"
-          onerror="this.onerror=null;this.src='Ivano-bongiovanni.jpg'">
-        <div class="speaker-role">Speaker &amp; Panellist</div>
-        <div class="speaker-name">Dr Ivano Bongiovanni</div>
-        <div class="speaker-title">Senior Lecturer in Information Security, Governance and Leadership, UQ Business School; General Manager, AUSCERT; member of UQ Cyber</div>
-        <a href="https://business.uq.edu.au/profile/7972/ivano-bongiovanni" target="_blank" class="speaker-link">Profile</a>
-      </div>
-      <div class="speaker-card confirmed">
-        <img class="speaker-photo" src="David-stockdale.png" alt="David Stockdale"
-          onerror="this.onerror=null;this.src='David-stockdale.jpg'">
+        <img class="speaker-photo" src="David-stockdale.png" alt="David Stockdale" onerror="this.onerror=null;this.src='David-stockdale.jpg'">
         <div class="speaker-role">Panellist</div>
         <div class="speaker-name">David Stockdale</div>
         <div class="speaker-title">Director, AUSCERT; Deputy Director, ITS Cyber Security, The University of Queensland</div>
         <a href="https://www.cyber.uq.edu.au/profile/260/david-stockdale" target="_blank" class="speaker-link">Profile</a>
       </div>
-      <div class="speaker-card">
-        <div class="speaker-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-        <div class="speaker-role">Keynote Speaker 2</div>
-        <div class="speaker-name">To be confirmed</div>
+
+      <div class="speaker-card confirmed">
+        <img class="speaker-photo" src="Xue-li.jpeg" alt="Professor Xue Li" onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/Xue-li.jpeg'">
+        <div class="speaker-role">Panellist</div>
+        <div class="speaker-name">Professor Xue Li</div>
+        <div class="speaker-title">Professor, School of Electrical Engineering and Computer Science, The University of Queensland</div>
+        <a href="https://about.uq.edu.au/experts/973" target="_blank" class="speaker-link">Profile</a>
       </div>
+
       <div class="speaker-card">
         <div class="speaker-avatar"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <div class="speaker-role">Lightning Talks</div>
         <div class="speaker-name">To be confirmed</div>
       </div>
+
       <div class="speaker-card" style="background:var(--pale);border-style:solid;border-color:var(--rule);">
         <div class="speaker-avatar" style="background:white;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#51247A" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <div class="speaker-role">Panel Discussant</div>
         <div class="speaker-name">To be confirmed</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -451,20 +385,14 @@
     <p class="section-lead">Thursday, 30 July 2026 &middot; The University of Queensland, Brisbane &middot; 1:00 PM to 5:45 PM AEST</p>
     <div class="agenda-wrap">
       <table class="agenda">
-        <thead>
-          <tr>
-            <th>AEST / Brisbane</th>
-            <th>IST / New Delhi</th>
-            <th>Session</th>
-          </tr>
-        </thead>
+        <thead><tr><th>AEST / Brisbane</th><th>IST / New Delhi</th><th>Session</th></tr></thead>
         <tbody>
           <tr><td class="time">1:00 PM &ndash; 1:20 PM</td><td class="time">8:30 AM &ndash; 8:50 AM</td><td class="session">Introductory Talk &mdash; Professor Ryan Ko</td></tr>
           <tr><td class="time">1:20 PM &ndash; 1:40 PM</td><td class="time">8:50 AM &ndash; 9:10 AM</td><td class="session">Presentation of Draft Report</td></tr>
           <tr><td class="time">1:40 PM &ndash; 3:10 PM</td><td class="time">9:10 AM &ndash; 10:40 AM</td><td class="session">Panel &mdash; Structured Feedback Discussion</td></tr>
           <tr><td class="time">3:10 PM &ndash; 3:40 PM</td><td class="time">10:40 AM &ndash; 11:10 AM</td><td>Refreshment Break</td></tr>
           <tr><td class="time">3:40 PM &ndash; 4:00 PM</td><td class="time">11:10 AM &ndash; 11:30 AM</td><td class="session">Keynote Address 1 &mdash; Dr Ivano Bongiovanni</td></tr>
-          <tr><td class="time">4:00 PM &ndash; 4:20 PM</td><td class="time">11:30 AM &ndash; 11:50 AM</td><td class="session">Keynote Address 2 &mdash; To be confirmed</td></tr>
+          <tr><td class="time">4:00 PM &ndash; 4:20 PM</td><td class="time">11:30 AM &ndash; 11:50 AM</td><td class="session">Keynote Address 2 &mdash; Dr. Michelle Lee JP</td></tr>
           <tr><td class="time">4:20 PM &ndash; 4:45 PM</td><td class="time">11:50 AM &ndash; 12:15 PM</td><td class="session">Lightning Talks</td></tr>
           <tr><td class="time">4:45 PM &ndash; 5:00 PM</td><td class="time">12:15 PM &ndash; 12:30 PM</td><td class="session">Synthesis, Next Steps, and Closing</td></tr>
           <tr><td class="time">5:00 PM &ndash; 5:45 PM</td><td class="time">12:30 PM &ndash; 1:15 PM</td><td>Dinner</td></tr>
@@ -481,12 +409,10 @@
   <div class="inner">
     <p class="section-label">Organising Team</p>
     <h2 class="section-title">Organisers</h2>
-
     <p class="org-label">Lead Organisers</p>
     <div class="org-lead-grid">
       <div class="org-card">
-        <img class="org-photo" src="priyanka-singh.png" alt="Dr Priyanka Singh"
-          onerror="this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/priyanka-singh.png'">
+        <img class="org-photo" src="priyanka-singh.png" alt="Dr Priyanka Singh" onerror="this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/priyanka-singh.png'">
         <div class="org-name">Dr Priyanka Singh</div>
         <div class="org-title">Senior Lecturer in Cyber Security<br>Program Convenor, Master of Cybersecurity<br>UQ Cyber Research Centre</div>
         <a href="https://www.cyber.uq.edu.au/profile/1382/priyanka-singh" target="_blank" class="org-link">Profile</a>
@@ -494,28 +420,16 @@
         <a href="mailto:priyanka.singh@uq.edu.au" class="org-link">Email</a>
       </div>
       <div class="org-card">
-        <img class="org-photo" src="Katie-williams.jpeg" alt="Dr Katie Williams"
-          onerror="this.onerror=null;this.src='Katie-williams.jpg'">
+        <img class="org-photo" src="Katie-williams.jpeg" alt="Dr Katie Williams" onerror="this.onerror=null;this.src='Katie-williams.jpg'">
         <div class="org-name">Dr Katie Williams</div>
         <div class="org-title">Senior Lecturer, Business Information Systems<br>UQ Business School<br>The University of Queensland</div>
         <a href="https://business.uq.edu.au/profile/13114/katie-williams" target="_blank" class="org-link">Profile</a>
       </div>
-      <div class="org-card">
-        <img class="org-photo" src="Xue-li.jpeg" alt="Professor Xue Li"
-          onerror="this.onerror=null;this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/Xue-li.jpeg'">
-        <div class="org-name">Professor Xue Li</div>
-        <div class="org-title">Professor, School of Electrical Engineering and Computer Science<br>The University of Queensland</div>
-        <a href="https://about.uq.edu.au/experts/973" target="_blank" class="org-link">Profile</a>
-        &ensp;
-        <a href="mailto:xueli@eecs.uq.edu.au" class="org-link">Email</a>
-      </div>
     </div>
-
     <p class="org-label">Conference Team</p>
     <div class="org-support-grid">
       <div class="org-card support">
-        <img class="org-photo" src="Gagandeep-Singh.jpg" alt="Gagandeep Singh"
-          onerror="this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/Gagandeep-Singh.jpg'">
+        <img class="org-photo" src="Gagandeep-Singh.jpg" alt="Gagandeep Singh" onerror="this.src='https://raw.githubusercontent.com/impact-initiative/Team/main/Gagandeep-Singh.jpg'">
         <div class="org-name">Gagandeep Singh</div>
         <div class="org-title">Conference Coordinator<br>Research Assistant, UQ Cyber Research Centre</div>
         <a href="https://www.linkedin.com/in/gagandeep-singh-12a91b144" target="_blank" class="org-link">LinkedIn</a>
